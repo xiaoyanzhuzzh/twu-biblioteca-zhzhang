@@ -20,4 +20,11 @@ public class BookTest {
         assertEquals(name, book.getName());
     }
 
+    @Test
+    public void canSetBookAuthor() {
+        String author = "Martin Fowler";
+        book.setAuthor(author);
+        assertEquals(author, book.getAuthor());
+    }
+
 }
