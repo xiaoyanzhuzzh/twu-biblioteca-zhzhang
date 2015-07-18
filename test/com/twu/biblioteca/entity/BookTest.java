@@ -37,4 +37,12 @@ public class BookTest {
         assertEquals(date, book.getPublishedDate());
     }
 
+    @Test
+    public void constructorTest() {
+        book = new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
+        assertEquals("Refactoring: Improving the Design of Existing Code", book.getName());
+        assertEquals("Martin Fowler", book.getAuthor());
+        assertEquals("July 8, 1999", book.getPublishedDate());
+    }
+
 }
