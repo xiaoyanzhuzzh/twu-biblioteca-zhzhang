@@ -29,6 +29,13 @@ public class UserTest {
     public void canSetUserTypeTest() {
         user.setType("customer");
         assertEquals("customer", user.getType());
+    }
 
+    @Test
+    public void constructorTest() {
+        user = new User("zhzhang", "1111", "customer");
+        assertEquals("zhzhang", user.getName());
+        assertEquals("1111", user.getPassword());
+        assertEquals("customer", user.getType());
     }
 }
