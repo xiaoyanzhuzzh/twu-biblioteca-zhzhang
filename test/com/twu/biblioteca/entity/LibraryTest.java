@@ -24,4 +24,12 @@ public class LibraryTest {
         library.setBooks(books);
         assertEquals(books, library.getBooks());
     }
+
+    @Test
+    public void canSetUsersTest() {
+        List<User> users = new ArrayList<User>();
+        users.add(new User("zhzhang", "1111", "customer"));
+        library.setUsers(users);
+        assertEquals(users, library.getUsers());
+    }
 }
