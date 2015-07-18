@@ -24,4 +24,11 @@ public class UserTest {
         user.setPassword("1111");
         assertEquals("1111", user.getPassword());
     }
+
+    @Test
+    public void canSetUserTypeTest() {
+        user.setType("customer");
+        assertEquals("customer", user.getType());
+
+    }
 }
