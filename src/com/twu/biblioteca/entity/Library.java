@@ -1,7 +1,15 @@
 package com.twu.biblioteca.entity;
 
-/**
- * Created by zhihuizhang on 7/18/15.
- */
+import java.util.List;
+
 public class Library {
+    private List<Book> books;
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
 }
