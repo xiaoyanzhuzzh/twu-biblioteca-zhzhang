@@ -2,8 +2,10 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.Library;
+import com.twu.biblioteca.entity.User;
+import com.twu.biblioteca.helper.InputReaderHelper;
+import com.twu.biblioteca.helper.Libraryhelper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BibliotecaApp {
@@ -13,16 +15,11 @@ public class BibliotecaApp {
         BibliotecaApp bibliotecaApp =  new BibliotecaApp();
         bibliotecaApp.showWelcomeMessage();
 
-        List<Book> books = new ArrayList<Book>();
-        books.add(new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
-        books.add(new Book("Head First Design Patterns", "Eric Freeman", "November 4, 2004"));
-        books.add(new Book("Clean Code", "Robert C. Martin ", "August 11, 2008"));
-        books.add(new Book("Programming in Scala", "Martin Odersky", "January 4, 2011"));
-        books.add(new Book("Head First Java", "Kathy Sierra", "February 9, 2005"));
-        books.add(new Book("JavaScript: The Good Parts", "Douglas Crockford", "May, 2008"));
+        Library library = new Libraryhelper().initLibrary();
+        if(bibliotecaApp.userLogin(library.getUsers())) {
 
-        Library library = new Library(books);
-        bibliotecaApp.showBooksOfLibrary(library.getBooks());
+            bibliotecaApp.showCustomerOption(library.getBooks());
+        }
     }
 
     public void showWelcomeMessage() {
@@ -31,15 +28,61 @@ public class BibliotecaApp {
         System.out.println(welcomeMessage);
     }
 
+    public Boolean userLogin(List<User> users) {
+        System.out.println("Please enter your userName:");
+        String userName = InputReaderHelper.getInput();
+        System.out.println("Please enter your password:");
+        String password = InputReaderHelper.getInput();
+
+        for(User user: users) {
+            if(user.getName().equals(userName) && user.getPassword().equals(password)) {
+                System.out.println("Dear " + userName + ", Login Success!\n");
+                return true;
+            }
+        }
+        System.out.println("----UserName Or Password Wrong----");
+        return false;
+
+    }
+
+    public String showMainMenuForCustomer() {
+
+        return "---------- Main  Menu ----------\n" +
+                "\n[0] Exit BIBLIOTECA\n" +
+                "[1] List Books of Library\n" +
+                "\nPlease Enter Your Choice :";
+    }
+
+    public void showCustomerOption(List<Book> books) {
+
+        int input = -1;
+        while(input != 0) {
+            System.out.println(this.showMainMenuForCustomer());
+            input = Integer.parseInt(InputReaderHelper.getInput());
+            switch(input) {
+                case 1:
+                    this.showBooksOfLibrary(books);
+                    break;
+                case 0:
+                    System.out.println("\n---------- EXIT BIBLIOTECA ----------");
+                    break;
+                default:
+                    System.out.println("\nThe Input Is Illegal!\n");
+            }
+        }
+
+    }
+
     public void showBooksOfLibrary(List<Book> books) {
 
-        System.out.println("----- BOOK LIST OF BIBLIOTECA -----\n");
+        System.out.println("---------- BOOK LIST OF BIBLIOTECA ----------\n");
 
         for (int i = 0; i < books.size(); i++) {
             System.out.println("[" + (i + 1) + "]" + " BookName: " + books.get(i).getName() +
                     ", Author: " + books.get(i).getAuthor() + ", Publish Date: " +
                     books.get(i).getPublishedDate());
         }
+        System.out.println();
     }
 
 }
