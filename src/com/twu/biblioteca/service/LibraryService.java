@@ -47,7 +47,9 @@ public class LibraryService {
                 "\nPlease Enter Your Choice :";
     }
 
-    public void showBooksOfLibrary(List<Book> books) {
+    public void showBooksOfLibrary(Library library) {
+
+        List<Book> books = this.getAvailableBooks(library);
         System.out.println("---------- BOOK LIST OF BIBLIOTECA ----------\n");
 
         for (int i = 0; i < books.size(); i++) {
@@ -61,7 +63,7 @@ public class LibraryService {
     public void checkOutBook(Library library) {
 
         List<Book> books = this.getAvailableBooks(library);
-        this.showBooksOfLibrary(books);
+        this.showBooksOfLibrary(library);
 
         System.out.println("Please Enter the Book Number You Want to Check Out:");
         int checkOutNumber = Integer.parseInt(InputReaderHelper.getInput());
@@ -71,10 +73,9 @@ public class LibraryService {
             System.out.println("\nSelect A Valid Option!\n");
         } else {
 
-            System.out.println(checkOutNumber - 1);
             books.get(checkOutNumber -1).setIsBorrowed(true);
 
-            System.out.println(books.get(checkOutNumber - 1).getIsBorrowed());
+            System.out.println(library.getBooks());
             System.out.println(this.getAvailableBooks(library).size());
 
             List<Book> returnBooks = new ArrayList<Book>();
