@@ -1,9 +1,12 @@
 package com.twu.biblioteca.entity;
 
+import java.util.List;
+
 public class User {
     private String name;
     private String password;
     private String type;
+    private List<Book> borrowedBooks;
 
     public User() {
 
@@ -37,5 +40,13 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void setBorrowedBooks(List<Book> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
+    }
+
+    public List<Book> getBorrowedBooks() {
+        return borrowedBooks;
     }
 }
