@@ -28,4 +28,14 @@ public class LibraryService {
     public String showWelcomeMessage() {
         return "----- WELCOME TO BIBLIOTECA -----\n";
     }
+
+    public String showMainMenuForCustomer() {
+
+        return "---------- Main  Menu ----------\n" +
+                "\n[0] Exit BIBLIOTECA\n" +
+                "[1] List Books of Library\n" +
+                "[2] Check Out Book\n" +
+                "[3] Return Book\n" +
+                "\nPlease Enter Your Choice :";
+    }
 }
