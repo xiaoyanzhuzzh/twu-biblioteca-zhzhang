@@ -37,8 +37,8 @@ public class BookTest {
     @Test
     public void canSetIsBorrowed() {
         String date = "July 8, 1999";
-        book.setIsBorrowed(false);
-        assertEquals(false, book.getIsBorrowed());
+        book.setIsBorrowed(true);
+        assertEquals(true, book.getIsBorrowed());
     }
 
     @Test
