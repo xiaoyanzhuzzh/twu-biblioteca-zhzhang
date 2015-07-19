@@ -35,6 +35,13 @@ public class BookTest {
     }
 
     @Test
+    public void canSetIsBorrowed() {
+        String date = "July 8, 1999";
+        book.setIsBorrowed(false);
+        assertEquals(false, book.getIsBorrowed());
+    }
+
+    @Test
     public void constructorTest() {
         book = new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
         assertEquals("Refactoring: Improving the Design of Existing Code", book.getName());

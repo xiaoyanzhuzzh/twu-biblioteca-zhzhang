@@ -5,6 +5,7 @@ public class Book {
     private String name;
     private String author;
     private String publishedDate;
+    private boolean isBorrowed;
 
     public Book() {
 
@@ -38,6 +39,15 @@ public class Book {
 
     public void setPublishedDate(String publishedDate) {
         this.publishedDate = publishedDate;
+    }
+
+
+    public void setIsBorrowed(boolean isBorrowed) {
+        this.isBorrowed = isBorrowed;
+    }
+
+    public boolean getIsBorrowed() {
+        return isBorrowed;
     }
 
     @Override
