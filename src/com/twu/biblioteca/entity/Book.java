@@ -15,6 +15,7 @@ public class Book {
         this.name = name;
         this.author = author;
         this.publishedDate = publishedDate;
+        this.isBorrowed = false;
     }
 
     public String getName() {
@@ -56,6 +57,7 @@ public class Book {
                 "name='" + name + '\'' +
                 ", author='" + author + '\'' +
                 ", publishedDate='" + publishedDate + '\'' +
+                ", isBorrowed=" + isBorrowed +
                 '}';
     }
 }
