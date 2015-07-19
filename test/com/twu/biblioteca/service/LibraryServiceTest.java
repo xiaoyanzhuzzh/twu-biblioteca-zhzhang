@@ -2,7 +2,6 @@ package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.User;
-import com.twu.biblioteca.helper.InputReaderHelper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class LibraryServiceTest {
 
@@ -23,15 +21,19 @@ public class LibraryServiceTest {
     }
 
     @Test
-    public void canInitLibraryTest() {
+    public void canInitUsersTest() {
 
         User user = new User("zhzhang", "1111", "customer");
-        assertEquals(user.getName(), libraryService.initLibrary().getUsers().get(0).getName());
-        assertEquals(user.getPassword(), libraryService.initLibrary().getUsers().get(0).getPassword());
+        assertEquals(user.getName(), libraryService.initUsers().get(0).getName());
+        assertEquals(user.getPassword(), libraryService.initUsers().get(0).getPassword());
+    }
+
+    @Test
+    public void canInitBooksTest() {
 
         Book book = new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
-        assertEquals(book.getName(), libraryService.initLibrary().getBooks().get(0).getName());
-        assertEquals(book.getAuthor(), libraryService.initLibrary().getBooks().get(0).getAuthor());
+        assertEquals(book.getName(), libraryService.initBooks().get(0).getName());
+        assertEquals(book.getAuthor(), libraryService.initBooks().get(0).getAuthor());
     }
 
     @Test
@@ -42,7 +44,7 @@ public class LibraryServiceTest {
     }
 
     @Test
-    public void canShowMainMenuForCustomer() {
+    public void canShowMainMenuForCustomerTest() {
 
         String welcomeMessage = "---------- Main  Menu ----------\n" +
                                 "\n[0] Exit BIBLIOTECA\n" +
@@ -54,9 +56,15 @@ public class LibraryServiceTest {
     }
 
     @Test
-    public void canShowBooksOfLibrary() {
+    public void canShowBooksOfLibraryTest() {
 
         List<Book> books = new ArrayList<Book>();
         libraryService.showBooksOfLibrary(books);
     }
+
+//    @Test
+//    public void canCheckOutBookTest() {
+//
+//        libraryService.checkOutBook();
+//    }
 }
