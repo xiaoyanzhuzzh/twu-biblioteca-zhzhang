@@ -1,6 +1,7 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.entity.Book;
+import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.entity.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -58,8 +59,8 @@ public class LibraryServiceTest {
     @Test
     public void canShowBooksOfLibraryTest() {
 
-        List<Book> books = new ArrayList<Book>();
-        libraryService.showBooksOfLibrary(books);
+        Library library = new Library(libraryService);
+        libraryService.showBooksOfLibrary(library);
     }
 
 //    @Test
