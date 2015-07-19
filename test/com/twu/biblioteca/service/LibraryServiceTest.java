@@ -27,4 +27,10 @@ public class LibraryServiceTest {
         assertEquals(book.getName(), libraryService.initLibrary().getBooks().get(0).getName());
         assertEquals(book.getAuthor(), libraryService.initLibrary().getBooks().get(0).getAuthor());
     }
+
+    @Test
+    public void canShowWelcomeMessageTest() {
+        String welcomeMessage = "----- WELCOME TO BIBLIOTECA -----\n";
+        assertEquals(welcomeMessage, libraryService.showWelcomeMessage());
+    }
 }

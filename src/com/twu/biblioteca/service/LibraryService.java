@@ -24,4 +24,8 @@ public class LibraryService {
 
         return new Library(books, users);
     }
+
+    public String showWelcomeMessage() {
+        return "----- WELCOME TO BIBLIOTECA -----\n";
+    }
 }
