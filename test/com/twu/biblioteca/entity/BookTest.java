@@ -3,8 +3,6 @@ package com.twu.biblioteca.entity;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Date;
-
 import static org.junit.Assert.assertEquals;
 
 public class BookTest {
@@ -28,7 +26,6 @@ public class BookTest {
         book.setAuthor(author);
         assertEquals(author, book.getAuthor());
     }
-
 
     @Test
     public void canSetPublishedDate() {
