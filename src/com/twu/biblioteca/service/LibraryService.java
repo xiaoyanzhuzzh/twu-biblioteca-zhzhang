@@ -38,4 +38,15 @@ public class LibraryService {
                 "[3] Return Book\n" +
                 "\nPlease Enter Your Choice :";
     }
+
+    public void showBooksOfLibrary(List<Book> books) {
+        System.out.println("---------- BOOK LIST OF BIBLIOTECA ----------\n");
+
+        for (int i = 0; i < books.size(); i++) {
+            System.out.println("[" + (i + 1) + "]" + " BookName: " + books.get(i).getName() +
+                    ", Author: " + books.get(i).getAuthor() + ", Publish Date: " +
+                    books.get(i).getPublishedDate());
+        }
+        System.out.println();
+    }
 }

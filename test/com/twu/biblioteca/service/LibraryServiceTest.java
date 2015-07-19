@@ -24,7 +24,7 @@ public class LibraryServiceTest {
 
     @Test
     public void canInitLibraryTest() {
-        
+
         User user = new User("zhzhang", "1111", "customer");
         assertEquals(user.getName(), libraryService.initLibrary().getUsers().get(0).getName());
         assertEquals(user.getPassword(), libraryService.initLibrary().getUsers().get(0).getPassword());
@@ -51,5 +51,12 @@ public class LibraryServiceTest {
                                 "[3] Return Book\n" +
                                 "\nPlease Enter Your Choice :";
         assertEquals(welcomeMessage, libraryService.showMainMenuForCustomer());
+    }
+
+    @Test
+    public void canShowBooksOfLibrary() {
+
+        List<Book> books = new ArrayList<Book>();
+        libraryService.showBooksOfLibrary(books);
     }
 }
