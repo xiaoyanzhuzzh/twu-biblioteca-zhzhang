@@ -18,6 +18,11 @@ public class User {
         this.type = type;
     }
 
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
