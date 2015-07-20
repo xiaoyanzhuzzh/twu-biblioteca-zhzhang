@@ -40,14 +40,14 @@ public class LibraryServiceTest {
     @Test
     public void canShowWelcomeMessageTest() {
 
-        String welcomeMessage = "----- WELCOME TO BIBLIOTECA -----\n";
+        String welcomeMessage = "----------   WELCOME TO BIBLIOTECA   ----------";
         assertEquals(welcomeMessage, libraryService.showWelcomeMessage());
     }
 
     @Test
     public void canShowMainMenuForCustomerTest() {
 
-        String welcomeMessage = "---------- Main  Menu ----------\n" +
+        String welcomeMessage = "----------   Main  Menu   ----------\n" +
                                 "\n[0] Exit BIBLIOTECA\n" +
                                 "[1] List Books of Library\n" +
                                 "[2] Check Out Book\n" +

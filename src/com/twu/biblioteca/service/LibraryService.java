@@ -34,12 +34,12 @@ public class LibraryService {
     }
 
     public String showWelcomeMessage() {
-        return "----- WELCOME TO BIBLIOTECA -----\n";
+        return "----------   WELCOME TO BIBLIOTECA   ----------";
     }
 
     public String showMainMenuForCustomer() {
 
-        return "---------- Main  Menu ----------\n" +
+        return "----------   Main  Menu   ----------\n" +
                 "\n[0] Exit BIBLIOTECA\n" +
                 "[1] List Books of Library\n" +
                 "[2] Check Out Book\n" +
@@ -50,17 +50,16 @@ public class LibraryService {
     public void showBooksOfLibrary(Library library) {
 
         List<Book> books = this.getAvailableBooks(library);
-        System.out.println("---------- BOOK LIST OF BIBLIOTECA ----------\n");
+        System.out.println("----------   BOOK LIST OF BIBLIOTECA   ----------\n");
 
         for (int i = 0; i < books.size(); i++) {
             System.out.println("[" + (i + 1) + "]" + " BookName: " + books.get(i).getName() +
                     ", Author: " + books.get(i).getAuthor() + ", Publish Date: " +
                     books.get(i).getPublishedDate());
         }
-        System.out.println();
     }
 
-    public void checkOutBook(Library library) {
+    public void checkOutBook(Library library, User user) {
 
         List<Book> books = this.getAvailableBooks(library);
         this.showBooksOfLibrary(library);
@@ -75,12 +74,39 @@ public class LibraryService {
 
             books.get(checkOutNumber -1).setIsBorrowed(true);
 
-            System.out.println(library.getBooks());
-            System.out.println(this.getAvailableBooks(library).size());
-
             List<Book> returnBooks = new ArrayList<Book>();
             returnBooks.add(books.get(checkOutNumber));
+
+            user.setBorrowedBooks(returnBooks);
             System.out.println("Thank you! Enjoy the book");
+        }
+    }
+
+    public void returnBooks(User user) {
+
+        this.showReturnBooks(user);
+        System.out.println("Please Enter the Book Number You Want to Return:");
+
+        int returnNumber = Integer.parseInt(InputReaderHelper.getInput());
+        if(returnNumber < 0 && returnNumber > user.getBorrowedBooks().size()) {
+
+            System.out.println("\nSelect A Valid Option!\n");
+        } else {
+
+            user.getBorrowedBooks().get(returnNumber - 1).setIsBorrowed(false);
+            user.getBorrowedBooks().remove(returnNumber - 1);
+            System.out.println("Thank you for returning the book");
+        }
+    }
+    public void showReturnBooks(User user) {
+
+        List<Book> books = user.getBorrowedBooks();
+        System.out.println("----------   BORROWED BOOK LIST   ----------\n");
+
+        for (int i = 0; i < books.size(); i++) {
+            System.out.println("[" + (i + 1) + "]" + " BookName: " + books.get(i).getName() +
+                    ", Author: " + books.get(i).getAuthor() + ", Publish Date: " +
+                    books.get(i).getPublishedDate());
         }
     }
 
@@ -97,22 +123,4 @@ public class LibraryService {
 
         return availableBooks;
     }
-
-//    public void CheckOutBook() {
-//
-//        bookLibrary.listBooks(bookLibrary.getAvailableBooks());
-//        System.out.println("Please input one number that you want to checkout :");
-//        int checkoutNumber = Integer.parseInt(InputReader.getInput());
-//
-//        try {
-//            Book checkoutBook = bookLibrary.getAvailableBooks().get(checkoutNumber - 1);
-//            bookLibrary.getAvailableBooks().remove(checkoutNumber - 1);
-//            bookLibrary.setBorrowedBook(checkoutNumber);
-//            checkoutBook.setUser(user);
-//            System.out.println("Thank you! Enjoy the book");
-//        } catch (Exception e) {
-//            System.out.println("That book is not available");
-//            e.getMessage();
-//        }
-//    }
 }
