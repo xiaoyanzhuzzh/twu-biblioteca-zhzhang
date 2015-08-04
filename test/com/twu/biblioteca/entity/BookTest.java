@@ -14,6 +14,12 @@ public class BookTest {
     }
 
     @Test
+    public void canSetBookId() {
+        book.setId(1);
+        assertEquals(1, book.getId());
+    }
+
+    @Test
     public void canSetBookName() {
         String name = "Refactoring: Improving the Design of Existing Code";
         book.setName(name);
@@ -36,14 +42,14 @@ public class BookTest {
 
     @Test
     public void canSetIsBorrowed() {
-        String date = "July 8, 1999";
         book.setIsBorrowed(true);
         assertEquals(true, book.getIsBorrowed());
     }
 
     @Test
     public void constructorTest() {
-        book = new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
+        book = new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
+        assertEquals(1, book.getId());
         assertEquals("Refactoring: Improving the Design of Existing Code", book.getName());
         assertEquals("Martin Fowler", book.getAuthor());
         assertEquals("July 8, 1999", book.getPublishedDate());

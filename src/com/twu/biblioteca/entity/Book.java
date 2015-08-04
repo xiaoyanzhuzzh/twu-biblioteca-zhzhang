@@ -2,6 +2,7 @@ package com.twu.biblioteca.entity;
 
 public class Book {
 
+    private int id;
     private String name;
     private String author;
     private String publishedDate;
@@ -11,11 +12,20 @@ public class Book {
 
     }
 
-    public Book(String name, String author, String publishedDate) {
+    public Book(int id, String name, String author, String publishedDate) {
+        this.id += id;
         this.name = name;
         this.author = author;
         this.publishedDate = publishedDate;
         this.isBorrowed = false;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -51,18 +61,19 @@ public class Book {
         return isBorrowed;
     }
 
+    public String getBookInfo() {
+
+        return "[" + this.getId()  + "] "+ "BookName: " + this.getName() + ", Author: " + this.getAuthor() + ", Publish Date: " + this.getPublishedDate() + "\n";
+    }
+
     @Override
     public String toString() {
         return "Book{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", author='" + author + '\'' +
                 ", publishedDate='" + publishedDate + '\'' +
                 ", isBorrowed=" + isBorrowed +
                 '}';
-    }
-
-    public String getBookInfo() {
-
-        return "BookName: " + this.getName() + ", Author: " + this.getAuthor() + ", Publish Date: " + this.getPublishedDate() + "\n";
     }
 }
