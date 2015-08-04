@@ -60,4 +60,9 @@ public class Book {
                 ", isBorrowed=" + isBorrowed +
                 '}';
     }
+
+    public String getBookInfo() {
+
+        return "BookName: " + this.getName() + ", Author: " + this.getAuthor() + ", Publish Date: " + this.getPublishedDate() + "\n";
+    }
 }
