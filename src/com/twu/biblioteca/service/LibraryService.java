@@ -1,5 +1,6 @@
 package com.twu.biblioteca.service;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.entity.User;
@@ -108,22 +109,7 @@ public class LibraryService {
         }
     }
 
-//    public void returnBooks(User user) {
-//
-//        this.showReturnBooks(user);
-//        System.out.println("Please Enter the Book Number You Want to Return:");
-//
-//        int returnNumber = Integer.parseInt(InputReaderHelper.getInput());
-//        if(returnNumber < 0 && returnNumber > user.getBorrowedBooks().size()) {
-//
-//            System.out.println("\nSelect A Valid Option!\n");
-//        } else {
-//
-//            this.returnBooks(book, user);
-//        }
-//    }
-
-    public String showReturnBooksMenu(User user) {
+    public void showReturnBooksMenu(User user) {
 
         List<Book> books = user.getBorrowedBooks();
         String returnBooksMenu = "----------   BORROWED BOOK LIST   ----------\n";
@@ -133,7 +119,19 @@ public class LibraryService {
         }
 
         returnBooksMenu += "Please Enter the Book Number You Want to Return:\n";
-        return returnBooksMenu;
+        System.out.println(returnBooksMenu);
+
+        int returnNumber = Integer.parseInt(InputReaderHelper.getInput());
+
+        List<Integer> ids = this.getBookIds(user.getBorrowedBooks());
+
+        if(returnNumber < 0 && returnNumber > Collections.max(ids) && ids.contains(returnNumber)) {
+
+            System.out.println("\nSelect A Valid Option!\n");
+        } else {
+
+            this.returnBooks(this.getBookById(returnNumber, books), user);
+        }
     }
 
     public void returnBooks(Book book, User user) {
