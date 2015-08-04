@@ -1,7 +1,6 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.entity.Book;
-import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.entity.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -95,6 +94,31 @@ public class LibraryServiceTest {
         assertEquals(1, user.getBorrowedBooks().size());
         assertEquals(book.getName(), user.getBorrowedBooks().get(0).getName());
     }
+
+    @Test
+    public void canReturnBook() {
+
+        User user = new User("zhzhang", "1111", "customer");
+
+        List<Book> borrowedBooks = new ArrayList<Book>();
+        Book book = new Book(1, "Programming in Scala", "Martin Odersky", "January 4, 2011", true);
+        borrowedBooks.add(book);
+
+        user.setBorrowedBooks(borrowedBooks);
+
+        libraryService.returnBooks(book, user);
+        assertEquals(0, user.getBorrowedBooks().size());
+
+
+    }
+//
+//    @Test
+//    public void canShowCheckOutBooksMenuTest() {
+//
+//        assertEquals(checkOutBooksMenu, libraryService.showCheckOutBooksMenu());
+//    }
+
+
 
 }
 
