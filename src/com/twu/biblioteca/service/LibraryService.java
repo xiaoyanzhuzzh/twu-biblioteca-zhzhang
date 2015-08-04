@@ -1,7 +1,6 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.entity.Book;
-import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.entity.User;
 import com.twu.biblioteca.helper.InputReaderHelper;
 
@@ -46,18 +45,6 @@ public class LibraryService {
                 "[3] Return Book\n" +
                 "\nPlease Enter Your Choice :";
     }
-
-//    public void showBooksOfLibrary(Library library) {
-//
-//        List<Book> books = this.getAvailableBooks(library);
-//        System.out.println("----------   BOOK LIST OF BIBLIOTECA   ----------\n");
-//
-//        for (int i = 0; i < books.size(); i++) {
-//            System.out.println("[" + (i + 1) + "]" + " BookName: " + books.get(i).getName() +
-//                    ", Author: " + books.get(i).getAuthor() + ", Publish Date: " +
-//                    books.get(i).getPublishedDate());
-//        }
-//    }
 
 //    public void checkOutBook(Library library, User user) {
 //
