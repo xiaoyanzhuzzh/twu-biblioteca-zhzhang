@@ -25,12 +25,12 @@ public class LibraryTest {
         Library currentLibrary = new Library(libraryService);
 
         List<Book> books = new ArrayList<Book>();
-        books.add(new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
-        books.add(new Book("Head First Design Patterns", "Eric Freeman", "November 4, 2004"));
-        books.add(new Book("Clean Code", "Robert C. Martin ", "August 11, 2008"));
-        books.add(new Book("Programming in Scala", "Martin Odersky", "January 4, 2011"));
-        books.add(new Book("Head First Java", "Kathy Sierra", "February 9, 2005"));
-        books.add(new Book("JavaScript: The Good Parts", "Douglas Crockford", "May, 2008"));
+        books.add(new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
+        books.add(new Book(2, "Head First Design Patterns", "Eric Freeman", "November 4, 2004"));
+        books.add(new Book(3, "Clean Code", "Robert C. Martin ", "August 11, 2008"));
+        books.add(new Book(4, "Programming in Scala", "Martin Odersky", "January 4, 2011"));
+        books.add(new Book(5, "Head First Java", "Kathy Sierra", "February 9, 2005"));
+        books.add(new Book(6, "JavaScript: The Good Parts", "Douglas Crockford", "May, 2008"));
 
         assertEquals(books.get(0).getAuthor(), currentLibrary.getBooks().get(0).getAuthor());
 
@@ -44,7 +44,7 @@ public class LibraryTest {
     @Test
     public void canSetBooksTest() {
         List<Book> books = new ArrayList<Book>();
-        books.add(new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
+        books.add(new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
         library.setBooks(books);
         assertEquals(books, library.getBooks());
     }

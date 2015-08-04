@@ -1,12 +1,13 @@
 package com.twu.biblioteca.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
     private String name;
     private String password;
     private String type;
-    private List<Book> borrowedBooks;
+    private List<Book> borrowedBooks = new ArrayList<Book>();
 
     public User() {
 

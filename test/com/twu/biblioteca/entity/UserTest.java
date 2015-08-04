@@ -40,7 +40,7 @@ public class UserTest {
     public void canSetUserBorrowBooksTest() {
 
         List<Book> books = new ArrayList<Book>();
-        books.add(new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
+        books.add(new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
         user.setBorrowedBooks(books);
         assertEquals(books, user.getBorrowedBooks());
     }
