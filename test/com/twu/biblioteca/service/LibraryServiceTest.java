@@ -32,7 +32,7 @@ public class LibraryServiceTest {
     @Test
     public void canInitBooksTest() {
 
-        Book book = new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
+        Book book = new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
         assertEquals(book.getName(), libraryService.initBooks().get(0).getName());
         assertEquals(book.getAuthor(), libraryService.initBooks().get(0).getAuthor());
     }
@@ -59,7 +59,7 @@ public class LibraryServiceTest {
     @Test
     public void canGetAvailableBooks() {
 
-        Book book = new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
+        Book book = new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
         List<Book> books = new ArrayList<Book>();
         books.add(book);
 
@@ -75,11 +75,11 @@ public class LibraryServiceTest {
         String booksOfLibrary = "----------   BOOK LIST OF BIBLIOTECA   ----------\n";
 
         List<Book> books = new ArrayList<Book>();
-        books.add(new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
-        books.add(new Book("Programming in Scala", "Martin Odersky", "January 4, 2011"));
+        books.add(new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
+        books.add(new Book(2, "Programming in Scala", "Martin Odersky", "January 4, 2011"));
 
         for(int i = 0; i < libraryService.getAvailableBooks(books).size(); i++) {
-            booksOfLibrary += "[" + (i + 1) + "] " + libraryService.getAvailableBooks(books).get(i).getBookInfo();
+            booksOfLibrary += libraryService.getAvailableBooks(books).get(i).getBookInfo();
         }
         assertEquals(booksOfLibrary, libraryService.showBooksOfLibrary(libraryService.getAvailableBooks(books)));
     }
@@ -88,7 +88,7 @@ public class LibraryServiceTest {
     public void canCheckOutBookTest() {
 
         User user = new User("zhzhang", "1111", "customer");
-        Book book = new Book("Programming in Scala", "Martin Odersky", "January 4, 2011");
+        Book book = new Book(1, "Programming in Scala", "Martin Odersky", "January 4, 2011");
 
         libraryService.checkOutBook(book, user);
 
@@ -98,20 +98,3 @@ public class LibraryServiceTest {
 
 }
 
-
-
-
-
-//    @Test
-//    public void canShowBooksOfLibraryTest() {
-//
-//        Library library = new Library(libraryService);
-////        libraryService.showBooksOfLibrary(library);
-//    }
-
-//    @Test
-//    public void canCheckOutBookTest() {
-//
-//        libraryService.checkOutBook();
-//    }
-//}

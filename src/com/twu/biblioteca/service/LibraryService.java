@@ -1,6 +1,7 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.entity.Book;
+import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.entity.User;
 import com.twu.biblioteca.helper.InputReaderHelper;
 
@@ -22,12 +23,12 @@ public class LibraryService {
     public List<Book> initBooks() {
 
         List<Book> books = new ArrayList<Book>();
-        books.add(new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
-        books.add(new Book("Head First Design Patterns", "Eric Freeman", "November 4, 2004"));
-        books.add(new Book("Clean Code", "Robert C. Martin ", "August 11, 2008"));
-        books.add(new Book("Programming in Scala", "Martin Odersky", "January 4, 2011"));
-        books.add(new Book("Head First Java", "Kathy Sierra", "February 9, 2005"));
-        books.add(new Book("JavaScript: The Good Parts", "Douglas Crockford", "May, 2008"));
+        books.add(new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
+        books.add(new Book(2, "Head First Design Patterns", "Eric Freeman", "November 4, 2004"));
+        books.add(new Book(3, "Clean Code", "Robert C. Martin ", "August 11, 2008"));
+        books.add(new Book(4, "Programming in Scala", "Martin Odersky", "January 4, 2011"));
+        books.add(new Book(5, "Head First Java", "Kathy Sierra", "February 9, 2005"));
+        books.add(new Book(6, "JavaScript: The Good Parts", "Douglas Crockford", "May, 2008"));
 
         return books;
     }
@@ -45,6 +46,32 @@ public class LibraryService {
                 "[3] Return Book\n" +
                 "\nPlease Enter Your Choice :";
     }
+
+    public List<Book> getAvailableBooks(List<Book> books) {
+
+        List<Book> availableBooks = new ArrayList<Book>();
+        for(Book book: books) {
+
+            if(!book.getIsBorrowed()) {
+
+                availableBooks.add(book);
+            }
+        }
+
+        return availableBooks;
+    }
+
+    public String showBooksOfLibrary(List<Book> books) {
+
+        String booksOfLibrary = "----------   BOOK LIST OF BIBLIOTECA   ----------\n";
+
+        for(int i = 0; i < books.size(); i++) {
+            booksOfLibrary += books.get(i).getBookInfo();
+        }
+
+        return booksOfLibrary;
+    }
+
 
 //    public void checkOutBook(Library library, User user) {
 //
@@ -97,30 +124,18 @@ public class LibraryService {
         }
     }
 
-    public List<Book> getAvailableBooks(List<Book> books) {
+    public void checkOutBook(Book book, User user) {
 
-        List<Book> availableBooks = new ArrayList<Book>();
-        for(Book book: books) {
+        book.setIsBorrowed(true);
 
-            if(!book.getIsBorrowed()) {
+        List<Book> borrowedBooks = new ArrayList<Book>();
+        borrowedBooks.add(book);
 
-                availableBooks.add(book);
-            }
-        }
+        user.setBorrowedBooks(borrowedBooks);
 
-        return availableBooks;
+        System.out.println("Thank you! Enjoy the book");
     }
 
-    public String showBooksOfLibrary(List<Book> books) {
-
-        String booksOfLibrary = "----------   BOOK LIST OF BIBLIOTECA   ----------\n";
-
-        for(int i = 0; i < books.size(); i++) {
-            booksOfLibrary += "[" + (i + 1) + "] " + books.get(i).getBookInfo();
-        }
-
-        return booksOfLibrary;
-    }
 
 //    public List<Book> getAvailableBooks(Library library) {
 //
