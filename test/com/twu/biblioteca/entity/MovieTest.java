@@ -1,7 +1,22 @@
 package com.twu.biblioteca.entity;
 
-/**
- * Created by zhihuizhang on 8/4/15.
- */
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
 public class MovieTest {
+    private Movie movie;
+
+    @Before
+    public void initUser() {
+        movie = new Movie();
+    }
+
+    @Test
+    public void canSetMovieNameTest() {
+
+        movie.setName("The Social Network");
+        assertEquals("The Social Network", movie.getName());
+    }
 }
