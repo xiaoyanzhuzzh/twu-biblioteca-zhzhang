@@ -56,10 +56,10 @@ public class BibliotecaApp {
                     System.out.println(libraryService.showBooksOfLibrary(library.getBooks()));
                     break;
                 case 2:
-//                    libraryService.checkOutBook(library, user);
+                    libraryService.showCheckOutBooksMenu(library, user);
                     break;
                 case 3:
-                    libraryService.returnBooks(user);
+                    libraryService.showReturnBooksMenu(user);
                     break;
                 default:
                     System.out.println("\nSelect A Valid Option!\n");

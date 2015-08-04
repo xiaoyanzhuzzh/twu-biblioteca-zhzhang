@@ -20,6 +20,14 @@ public class Book {
         this.isBorrowed = false;
     }
 
+    public Book(int id, String name, String author, String publishedDate, boolean isBorrowed) {
+        this.id += id;
+        this.name = name;
+        this.author = author;
+        this.publishedDate = publishedDate;
+        this.isBorrowed = isBorrowed;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
