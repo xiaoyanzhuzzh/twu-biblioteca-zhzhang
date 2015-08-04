@@ -124,6 +124,17 @@ public class LibraryService {
         return availableBooks;
     }
 
+    public String showBooksOfLibrary(List<Book> books) {
+
+        String booksOfLibrary = "----------   BOOK LIST OF BIBLIOTECA   ----------\n";
+
+        for(int i = 0; i < books.size(); i++) {
+            booksOfLibrary += "[" + (i + 1) + "] " + books.get(i).getBookInfo();
+        }
+
+        return booksOfLibrary;
+    }
+
 //    public List<Book> getAvailableBooks(Library library) {
 //
 //        List<Book> availableBooks = new ArrayList<Book>();

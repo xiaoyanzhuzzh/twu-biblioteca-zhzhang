@@ -77,10 +77,10 @@ public class LibraryServiceTest {
         books.add(new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
         books.add(new Book("Programming in Scala", "Martin Odersky", "January 4, 2011"));
 
-            for(int i = 0; i < libraryService.getAvailableBooks(books).size(); i++) {
-                booksOfLibrary += "[" + (i + 1) + "] " + libraryService.getAvailableBooks(books).get(i).getBookInfo();
-            }
-            assertEquals(booksOfLibrary, libraryService.showBooksOfLibrary(libraryService.getAvailableBooks(books)));
+        for(int i = 0; i < libraryService.getAvailableBooks(books).size(); i++) {
+            booksOfLibrary += "[" + (i + 1) + "] " + libraryService.getAvailableBooks(books).get(i).getBookInfo();
+        }
+        assertEquals(booksOfLibrary, libraryService.showBooksOfLibrary(libraryService.getAvailableBooks(books)));
         }
 
     }
