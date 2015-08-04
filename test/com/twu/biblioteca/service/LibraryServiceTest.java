@@ -96,7 +96,30 @@ public class LibraryServiceTest {
     }
 
     @Test
-    public void canReturnBook() {
+    public void canReturnBookTest() {
+
+        User user = initUserWithBorrowedBooks();
+
+        libraryService.returnBooks(user.getBorrowedBooks().get(0), user);
+        assertEquals(0, user.getBorrowedBooks().size());
+    }
+
+    @Test
+    public void canShowReturnBooksMenuTest() {
+
+        User user = initUserWithBorrowedBooks();
+
+        String returnBooksMenu = "----------   BORROWED BOOK LIST   ----------\n";
+
+        for (int i = 0; i < user.getBorrowedBooks().size(); i++) {
+            returnBooksMenu += user.getBorrowedBooks().get(i).getBookInfo();
+        }
+
+        returnBooksMenu += "Please Enter the Book Number You Want to Return:\n";
+        assertEquals(returnBooksMenu, libraryService.showReturnBooksMenu(user));
+    }
+
+    private User initUserWithBorrowedBooks() {
 
         User user = new User("zhzhang", "1111", "customer");
 
@@ -105,20 +128,7 @@ public class LibraryServiceTest {
         borrowedBooks.add(book);
 
         user.setBorrowedBooks(borrowedBooks);
-
-        libraryService.returnBooks(book, user);
-        assertEquals(0, user.getBorrowedBooks().size());
-
-
+        return user;
     }
-//
-//    @Test
-//    public void canShowCheckOutBooksMenuTest() {
-//
-//        assertEquals(checkOutBooksMenu, libraryService.showCheckOutBooksMenu());
-//    }
-
-
-
 }
 

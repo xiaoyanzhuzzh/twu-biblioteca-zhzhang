@@ -119,22 +119,21 @@ public class LibraryService {
 //            System.out.println("\nSelect A Valid Option!\n");
 //        } else {
 //
-//            user.getBorrowedBooks().get(returnNumber - 1).setIsBorrowed(false);
-//            user.getBorrowedBooks().remove(returnNumber - 1);
-//            System.out.println("Thank you for returning the book");
+//            this.returnBooks(book, user);
 //        }
 //    }
 
-    public void showReturnBooksMenu(User user) {
+    public String showReturnBooksMenu(User user) {
 
         List<Book> books = user.getBorrowedBooks();
-        System.out.println("----------   BORROWED BOOK LIST   ----------\n");
+        String returnBooksMenu = "----------   BORROWED BOOK LIST   ----------\n";
 
         for (int i = 0; i < books.size(); i++) {
-            System.out.println("[" + (i + 1) + "]" + " BookName: " + books.get(i).getName() +
-                    ", Author: " + books.get(i).getAuthor() + ", Publish Date: " +
-                    books.get(i).getPublishedDate());
+            returnBooksMenu += books.get(i).getBookInfo();
         }
+
+        returnBooksMenu += "Please Enter the Book Number You Want to Return:\n";
+        return returnBooksMenu;
     }
 
     public void returnBooks(Book book, User user) {
