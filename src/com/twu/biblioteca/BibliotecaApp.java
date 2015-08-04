@@ -13,16 +13,14 @@ public class BibliotecaApp {
     public static void main(String[] args) {
 
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
-
         LibraryService libraryService = new LibraryService();
-        System.out.println(libraryService.showWelcomeMessage());
-
         Library library = new Library(libraryService);
-        User currentUser = bibliotecaApp.userLogin(library.getUsers());
-        if(currentUser != null) {
 
-            bibliotecaApp.userOption(libraryService, library, currentUser);
-        }
+        User currentUser;
+        do {
+            System.out.println(libraryService.showWelcomeMessage());
+            currentUser = bibliotecaApp.userLogin(library.getUsers());
+        } while(currentUser == null);
     }
 
     public User userLogin(List<User> users) {
@@ -53,10 +51,10 @@ public class BibliotecaApp {
                     System.out.println("\n---------- EXIT BIBLIOTECA ----------");
                     break;
                 case 1:
-                    libraryService.showBooksOfLibrary(library);
+//                    libraryService.showBooksOfLibrary(library);
                     break;
                 case 2:
-                    libraryService.checkOutBook(library, user);
+//                    libraryService.checkOutBook(library, user);
                     break;
                 case 3:
                     libraryService.returnBooks(user);
