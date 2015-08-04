@@ -1,6 +1,5 @@
 package com.twu.biblioteca.service;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.entity.User;

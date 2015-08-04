@@ -103,7 +103,7 @@ public class LibraryServiceTest {
         libraryService.returnBooks(user.getBorrowedBooks().get(0), user);
         assertEquals(0, user.getBorrowedBooks().size());
     }
-    
+
     private User initUserWithBorrowedBooks() {
 
         User user = new User("zhzhang", "1111", "customer");
