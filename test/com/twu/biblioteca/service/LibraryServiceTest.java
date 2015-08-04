@@ -30,6 +30,14 @@ public class LibraryServiceTest {
     }
 
     @Test
+    public void canInitBooksTest() {
+
+        Book book = new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
+        assertEquals(book.getName(), libraryService.initBooks().get(0).getName());
+        assertEquals(book.getAuthor(), libraryService.initBooks().get(0).getAuthor());
+    }
+
+    @Test
     public void canShowWelcomeMessageTest() {
 
         String welcomeMessage = "----------   WELCOME TO BIBLIOTECA   ----------";
@@ -62,25 +70,35 @@ public class LibraryServiceTest {
     }
 
     @Test
-    public void canInitBooksTest() {
-
-        Book book = new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
-        assertEquals(book.getName(), libraryService.initBooks().get(0).getName());
-        assertEquals(book.getAuthor(), libraryService.initBooks().get(0).getAuthor());
-    }
-
-
-
-    @Test
     public void canShowBooksOfLibraryTest() {
+        String booksOfLibrary = "----------   BOOK LIST OF BIBLIOTECA   ----------\n";
 
-        Library library = new Library(libraryService);
-//        libraryService.showBooksOfLibrary(library);
+        List<Book> books = new ArrayList<Book>();
+        books.add(new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
+        books.add(new Book("Programming in Scala", "Martin Odersky", "January 4, 2011"));
+
+            for(int i = 0; i < libraryService.getAvailableBooks(books).size(); i++) {
+                booksOfLibrary += "[" + (i + 1) + "] " + libraryService.getAvailableBooks(books).get(i).getBookInfo();
+            }
+            assertEquals(booksOfLibrary, libraryService.showBooksOfLibrary(libraryService.getAvailableBooks(books)));
+        }
+
     }
+
+
+
+
+
+//    @Test
+//    public void canShowBooksOfLibraryTest() {
+//
+//        Library library = new Library(libraryService);
+////        libraryService.showBooksOfLibrary(library);
+//    }
 
 //    @Test
 //    public void canCheckOutBookTest() {
 //
 //        libraryService.checkOutBook();
 //    }
-}
+//}
