@@ -47,4 +47,14 @@ public class MovieTest {
         movie.setRating(8);
         assertEquals(8, movie.getRating());
     }
- }
+
+    @Test
+    public void constructorTest() {
+
+        Movie currentMovie = new Movie(1, "The Social Network", "2010", "David Fincher", 8);
+        assertEquals(1, currentMovie.getId());
+        assertEquals("The Social Network", currentMovie.getName());
+        assertEquals("2010", currentMovie.getYear());
+        assertEquals("David Fincher", currentMovie.getDirector());
+    }
+}
