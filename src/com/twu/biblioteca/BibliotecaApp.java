@@ -21,6 +21,8 @@ public class BibliotecaApp {
             System.out.println(libraryService.showWelcomeMessage());
             currentUser = bibliotecaApp.userLogin(library.getUsers());
         } while(currentUser == null);
+
+        bibliotecaApp.userOption(libraryService, library, currentUser);
     }
 
     public User userLogin(List<User> users) {
@@ -51,7 +53,7 @@ public class BibliotecaApp {
                     System.out.println("\n---------- EXIT BIBLIOTECA ----------");
                     break;
                 case 1:
-//                    libraryService.showBooksOfLibrary(library);
+                    System.out.println(libraryService.showBooksOfLibrary(library.getBooks()));
                     break;
                 case 2:
 //                    libraryService.checkOutBook(library, user);
