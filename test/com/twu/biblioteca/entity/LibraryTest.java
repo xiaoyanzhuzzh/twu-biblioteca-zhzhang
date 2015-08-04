@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 public class LibraryTest {
 
@@ -39,7 +38,7 @@ public class LibraryTest {
         users.add(new User("zhzhang", "1111", "customer"));
         users.add(new User("yanzi", "1111", "librarian"));
         users.add(new User("xueqian", "1111", "librarian"));
-        
+
         assertEquals(users.get(0).getName(), currentLibrary.getUsers().get(0).getName());
     }
     @Test
