@@ -30,12 +30,31 @@ public class LibraryServiceTest {
     }
 
     @Test
+    public void canShowWelcomeMessageTest() {
+
+        String welcomeMessage = "----------   WELCOME TO BIBLIOTECA   ----------";
+        assertEquals(welcomeMessage, libraryService.showWelcomeMessage());
+    }
+
+    @Test
+    public void canShowMainMenuForCustomerTest() {
+
+        String welcomeMessage = "----------   Main  Menu   ----------\n" +
+                "\n[0] Exit BIBLIOTECA\n" +
+                "[1] List Books of Library\n" +
+                "[2] Check Out Book\n" +
+                "[3] Return Book\n" +
+                "\nPlease Enter Your Choice :";
+        assertEquals(welcomeMessage, libraryService.showMainMenuForCustomer());
+    }
+
+    @Test
     public void canGetAvailableBooks() {
 
         Book book = new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
         List<Book> books = new ArrayList<Book>();
         books.add(book);
-        
+
         assertEquals(1, libraryService.getAvailableBooks(books).size());
 
         book.setIsBorrowed(true);
@@ -50,24 +69,7 @@ public class LibraryServiceTest {
         assertEquals(book.getAuthor(), libraryService.initBooks().get(0).getAuthor());
     }
 
-    @Test
-    public void canShowWelcomeMessageTest() {
 
-        String welcomeMessage = "----------   WELCOME TO BIBLIOTECA   ----------";
-        assertEquals(welcomeMessage, libraryService.showWelcomeMessage());
-    }
-
-    @Test
-    public void canShowMainMenuForCustomerTest() {
-
-        String welcomeMessage = "----------   Main  Menu   ----------\n" +
-                                "\n[0] Exit BIBLIOTECA\n" +
-                                "[1] List Books of Library\n" +
-                                "[2] Check Out Book\n" +
-                                "[3] Return Book\n" +
-                                "\nPlease Enter Your Choice :";
-        assertEquals(welcomeMessage, libraryService.showMainMenuForCustomer());
-    }
 
     @Test
     public void canShowBooksOfLibraryTest() {
