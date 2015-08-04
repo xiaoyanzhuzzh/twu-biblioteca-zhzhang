@@ -1,22 +1,26 @@
 package com.twu.biblioteca.entity;
 
 import com.twu.biblioteca.service.BookService;
+import com.twu.biblioteca.service.MovieService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
 
-    private List<Book> books;
-    private List<User> users;
+    private List<Book> books = new ArrayList<Book>();
+    private List<User> users = new ArrayList<User>();
+    private List<Movie> movies = new ArrayList<Movie>();
 
     public Library() {
 
     }
 
-    public Library(BookService libraryService) {
+    public Library(BookService bookService, MovieService movieService) {
 
-        this.books = libraryService.initBooks();
-        this.users = libraryService.initUsers();
+        this.books = bookService.initBooks();
+        this.users = bookService.initUsers();
+        this.movies = movieService.initMovies();
     }
 
     public void setBooks(List<Book> books) {
@@ -27,12 +31,20 @@ public class Library {
         return books;
     }
 
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
     public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
+    }
+
+    public List<Movie> getMovies() {
+        return this.movies;
     }
 
     @Override
@@ -40,6 +52,7 @@ public class Library {
         return "Library{" +
                 "books=" + books +
                 ", users=" + users +
+                ", movies=" + movies +
                 '}';
     }
 }

@@ -4,6 +4,7 @@ import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.entity.User;
 import com.twu.biblioteca.helper.InputReaderHelper;
 import com.twu.biblioteca.service.BookService;
+import com.twu.biblioteca.service.MovieService;
 
 import java.util.List;
 
@@ -14,7 +15,8 @@ public class BibliotecaApp {
 
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
         BookService libraryService = new BookService();
-        Library library = new Library(libraryService);
+        MovieService movieService = new MovieService();
+        Library library = new Library(libraryService, movieService);
 
         User currentUser;
         do {
