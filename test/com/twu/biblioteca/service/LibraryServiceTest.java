@@ -71,6 +71,7 @@ public class LibraryServiceTest {
 
     @Test
     public void canShowBooksOfLibraryTest() {
+
         String booksOfLibrary = "----------   BOOK LIST OF BIBLIOTECA   ----------\n";
 
         List<Book> books = new ArrayList<Book>();
@@ -81,9 +82,21 @@ public class LibraryServiceTest {
             booksOfLibrary += "[" + (i + 1) + "] " + libraryService.getAvailableBooks(books).get(i).getBookInfo();
         }
         assertEquals(booksOfLibrary, libraryService.showBooksOfLibrary(libraryService.getAvailableBooks(books)));
-        }
-
     }
+
+    @Test
+    public void canCheckOutBookTest() {
+
+        User user = new User("zhzhang", "1111", "customer");
+        Book book = new Book("Programming in Scala", "Martin Odersky", "January 4, 2011");
+
+        libraryService.checkOutBook(book, user);
+
+        assertEquals(1, user.getBorrowedBooks().size());
+        assertEquals(book.getName(), user.getBorrowedBooks().get(0).getName());
+    }
+
+}
 
 
 
