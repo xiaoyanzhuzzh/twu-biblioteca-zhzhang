@@ -8,7 +8,7 @@ import com.twu.biblioteca.helper.InputReaderHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LibraryService {
+public class BookService {
 
     public List<User> initUsers() {
 

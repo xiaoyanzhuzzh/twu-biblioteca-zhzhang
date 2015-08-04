@@ -1,6 +1,6 @@
 package com.twu.biblioteca.entity;
 
-import com.twu.biblioteca.service.LibraryService;
+import com.twu.biblioteca.service.BookService;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class Library {
 
     }
 
-    public Library(LibraryService libraryService) {
+    public Library(BookService libraryService) {
 
         this.books = libraryService.initBooks();
         this.users = libraryService.initUsers();

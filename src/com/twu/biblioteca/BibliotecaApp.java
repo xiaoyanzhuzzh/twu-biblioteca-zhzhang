@@ -3,7 +3,7 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.entity.User;
 import com.twu.biblioteca.helper.InputReaderHelper;
-import com.twu.biblioteca.service.LibraryService;
+import com.twu.biblioteca.service.BookService;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
 
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
-        LibraryService libraryService = new LibraryService();
+        BookService libraryService = new BookService();
         Library library = new Library(libraryService);
 
         User currentUser;
@@ -42,7 +42,7 @@ public class BibliotecaApp {
         return null;
     }
 
-    public void userOption(LibraryService libraryService, Library library, User user) {
+    public void userOption(BookService libraryService, Library library, User user) {
 
         int input = -1;
         while(input != 0) {

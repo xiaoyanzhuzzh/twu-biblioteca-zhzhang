@@ -12,12 +12,12 @@ import static org.junit.Assert.assertEquals;
 
 public class LibraryServiceTest {
 
-    private LibraryService libraryService;
+    private BookService libraryService;
 
     @Before
     public void initLibraryService() {
 
-        libraryService = new LibraryService();
+        libraryService = new BookService();
     }
 
     @Test

@@ -1,6 +1,6 @@
 package com.twu.biblioteca.entity;
 
-import com.twu.biblioteca.service.LibraryService;
+import com.twu.biblioteca.service.BookService;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ public class LibraryTest {
     @Test
     public void initLibraryWithBooksAndUsers() {
 
-        LibraryService libraryService = new LibraryService();
+        BookService libraryService = new BookService();
         Library currentLibrary = new Library(libraryService);
 
         List<Book> books = new ArrayList<Book>();
