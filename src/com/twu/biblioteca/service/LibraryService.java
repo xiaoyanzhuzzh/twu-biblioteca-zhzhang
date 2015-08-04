@@ -6,7 +6,6 @@ import com.twu.biblioteca.entity.User;
 import com.twu.biblioteca.helper.InputReaderHelper;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LibraryService {
@@ -95,16 +94,14 @@ public class LibraryService {
         System.out.println("Please Enter the Book Number You Want to Check Out:");
         int checkOutNumber = Integer.parseInt(InputReaderHelper.getInput());
 
-        List<Integer> ids = this.getBookIds(books);
-        int maxId = Collections.max(ids);
-        Boolean hasExisted = ids.contains(checkOutNumber);
 
-        if(checkOutNumber < 0 && checkOutNumber > maxId && hasExisted) {
-
-            System.out.println("\nSelect A Valid Option!\n");
-        } else {
+        try {
 
             this.checkOutBook(this.getBookById(checkOutNumber, books), user);
+        } catch (Exception e) {
+
+            System.out.println("\nSelect A Valid Option!\n");
+            e.getMessage();
         }
     }
 
@@ -117,19 +114,17 @@ public class LibraryService {
             returnBooksMenu += books.get(i).getBookInfo();
         }
 
-        returnBooksMenu += "Please Enter the Book Number You Want to Return:\n";
+        returnBooksMenu += "Please Enter the Book Number You Want to Return:";
         System.out.println(returnBooksMenu);
-
         int returnNumber = Integer.parseInt(InputReaderHelper.getInput());
 
-        List<Integer> ids = this.getBookIds(user.getBorrowedBooks());
-
-        if(returnNumber < 0 && returnNumber > Collections.max(ids) && ids.contains(returnNumber)) {
-
-            System.out.println("\nSelect A Valid Option!\n");
-        } else {
+        try {
 
             this.returnBooks(this.getBookById(returnNumber, books), user);
+        } catch (Exception e) {
+
+            System.out.println("\nSelect A Valid Option!\n");
+            e.getMessage();
         }
     }
 
