@@ -33,10 +33,12 @@ public class LibraryServiceTest {
     public void canGetAvailableBooks() {
 
         Book book = new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
-        book.setIsBorrowed(true);
         List<Book> books = new ArrayList<Book>();
         books.add(book);
-        System.out.println(libraryService.getAvailableBooks(books));
+        
+        assertEquals(1, libraryService.getAvailableBooks(books).size());
+
+        book.setIsBorrowed(true);
         assertEquals(0, libraryService.getAvailableBooks(books).size());
     }
 
