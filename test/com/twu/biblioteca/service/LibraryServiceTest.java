@@ -6,6 +6,9 @@ import com.twu.biblioteca.entity.User;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class LibraryServiceTest {
@@ -24,6 +27,17 @@ public class LibraryServiceTest {
         User user = new User("zhzhang", "1111", "customer");
         assertEquals(user.getName(), libraryService.initUsers().get(0).getName());
         assertEquals(user.getPassword(), libraryService.initUsers().get(0).getPassword());
+    }
+
+    @Test
+    public void canGetAvailableBooks() {
+
+        Book book = new Book("Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
+        book.setIsBorrowed(true);
+        List<Book> books = new ArrayList<Book>();
+        books.add(book);
+        System.out.println(libraryService.getAvailableBooks(books));
+        assertEquals(0, libraryService.getAvailableBooks(books).size());
     }
 
     @Test
@@ -57,7 +71,7 @@ public class LibraryServiceTest {
     public void canShowBooksOfLibraryTest() {
 
         Library library = new Library(libraryService);
-        libraryService.showBooksOfLibrary(library);
+//        libraryService.showBooksOfLibrary(library);
     }
 
 //    @Test
