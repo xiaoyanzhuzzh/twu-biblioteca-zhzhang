@@ -73,6 +73,6 @@ public class Movie {
     public String getMovieInfo() {
 
         return "[" + this.getId() + "] " + "MovieName: " + this.getName() + ", Year: " + this.getYear() + ", Director: " + this.getDirector() +
-                "MovieRating: " + this.getRating() + "\n";
+                ", MovieRating: " + this.getRating() + "\n";
     }
 }
