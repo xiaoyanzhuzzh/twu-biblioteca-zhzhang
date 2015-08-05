@@ -103,10 +103,10 @@ public class LibraryService {
                     System.out.println(movieService.showMoviesOfLibrary(library.getMovies()));
                     break;
                 case 2:
-//                    movieService.showCheckOutMoviesMenu(library, user);
+                    movieService.showCheckOutMoviesMenu(library, user);
                     break;
                 case 3:
-//                    movieService.showReturnMoviesMenu(user);
+                    movieService.showReturnMoviesMenu(user);
                     break;
                 default:
                     System.out.println("\n----------   Select A Valid Option!   -----------\n");

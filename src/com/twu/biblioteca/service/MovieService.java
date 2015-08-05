@@ -1,7 +1,9 @@
 package com.twu.biblioteca.service;
 
+import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.entity.Movie;
 import com.twu.biblioteca.entity.User;
+import com.twu.biblioteca.helper.InputReaderHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +73,24 @@ public class MovieService {
         System.out.println("Thank you! Enjoy the Movie!");
     }
 
+    public void showCheckOutMoviesMenu(Library library, User user) {
+
+        List<Movie> movies = this.getAvailableMovies(library.getMovies());
+        System.out.println(this.showMoviesOfLibrary(movies));
+
+        System.out.println("Please Enter the Movie Number You Want to Check Out:");
+        int checkOutNumber = Integer.parseInt(InputReaderHelper.getInput());
+
+        try {
+
+            this.checkOutMovie(this.getMovieById(checkOutNumber, movies), user);
+        } catch (Exception e) {
+
+            System.out.println("\n----------   Select A Valid Option!   ----------\n");
+            e.getMessage();
+        }
+    }
+
     public void returnMovies(Movie movie, User user) {
 
         movie.setIsBorrowed(false);
@@ -78,4 +98,39 @@ public class MovieService {
         borrowedMovies.remove(movie);
         System.out.println("Thank you for returning the movie!");
     }
+
+    public void showReturnMoviesMenu(User user) {
+
+        List<Movie> movies = user.getBorrowedMovies();
+        String returnMoviesMenu = "----------   BORROWED MOVIE LIST   ----------\n";
+
+        for (int i = 0; i < movies.size(); i++) {
+            returnMoviesMenu += movies.get(i).getMovieInfo();
+        }
+
+        returnMoviesMenu += "Please Enter the Book Number You Want to Return:";
+        System.out.println(returnMoviesMenu);
+        int returnNumber = Integer.parseInt(InputReaderHelper.getInput());
+
+        try {
+
+            this.returnMovies(this.getMovieById(returnNumber, movies), user);
+        } catch (Exception e) {
+
+            System.out.println("\nSelect A Valid Option!\n");
+            e.getMessage();
+        }
+    }
+
+    private Movie getMovieById(int id, List<Movie> movies) {
+
+        Movie result = null;
+        for(int i = 0; i < movies.size(); i++) {
+            if(movies.get(i).getId() == id) {
+                result =  movies.get(i);
+            }
+        }
+        return result;
+    }
+
 }
