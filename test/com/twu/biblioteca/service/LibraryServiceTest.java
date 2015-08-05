@@ -21,6 +21,7 @@ public class LibraryServiceTest {
                 "[0] Quit Biblioteca System\n" +
                 "[1] List Books of Library\n" +
                 "[2] List Movies of Library\n" +
+                "[3] Show Your Own Information\n" +
                 "\nPlease Enter Your Choice :";
         assertEquals(welcomeMessage, libraryService.showMainMenuForCustomer());
     }

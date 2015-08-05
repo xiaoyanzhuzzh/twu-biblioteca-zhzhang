@@ -43,11 +43,16 @@ public class LibraryService {
         } else if(user.getType().equals("librarian")) {
 
             System.out.println("Dear " + userName + ", Login Success!\n");
-//            this.librarianOptionOfMainMenu();
+            this.librarianOptionOfMainMenu();
         }
         return user;
     }
-    public void customerOptionOfMainMenu(Library library, User user) {
+
+    private void librarianOptionOfMainMenu() {
+
+    }
+
+    private void customerOptionOfMainMenu(Library library, User user) {
 
         int input = -1;
         while(input != 0) {
@@ -72,7 +77,7 @@ public class LibraryService {
         }
     }
 
-    public void customerOptionOfBookMenu(Library library, User user) {
+    private void customerOptionOfBookMenu(Library library, User user) {
 
         int input = -1;
         while(input != 0) {
@@ -98,7 +103,7 @@ public class LibraryService {
         }
     }
 
-    public void customerOptionOfMovieMenu(Library library, User user) {
+    private void customerOptionOfMovieMenu(Library library, User user) {
 
         int input = -1;
         while(input != 0) {
