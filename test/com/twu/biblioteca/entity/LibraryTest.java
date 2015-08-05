@@ -57,7 +57,7 @@ public class LibraryTest {
 
         List<Book> books = new ArrayList<Book>();
         books.add(new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
-        
+
         library.setBooks(books);
         assertEquals(books, library.getBooks());
     }

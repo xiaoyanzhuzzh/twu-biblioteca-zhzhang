@@ -1,7 +1,22 @@
 package com.twu.biblioteca.service;
 
-/**
- * Created by zhihuizhang on 8/5/15.
- */
+import com.twu.biblioteca.entity.Library;
+
 public class LibraryService {
+
+    private Library library;
+
+    public Library getLibrary() {
+        return library;
+    }
+
+    public void setLibrary(Library library) {
+        this.library = library;
+    }
+
+    public void initLibrary() {
+        BookService libraryService = new BookService();
+        MovieService movieService = new MovieService();
+        library = new Library(libraryService, movieService);
+    }
 }
