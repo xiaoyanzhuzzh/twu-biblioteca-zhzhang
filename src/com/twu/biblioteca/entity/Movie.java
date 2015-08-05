@@ -7,6 +7,7 @@ public class Movie {
     private String year;
     private String director;
     private int rating;
+    private boolean isBorrowed;
 
     public Movie(int id, String name, String year, String director, int rating) {
         this.id = id;
@@ -14,6 +15,7 @@ public class Movie {
         this.year = year;
         this.director = director;
         this.rating = rating;
+        this.isBorrowed = false;
     }
 
     public Movie() {
@@ -58,5 +60,13 @@ public class Movie {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public void setIsBorrowed(boolean isBorrowed) {
+        this.isBorrowed = isBorrowed;
+    }
+
+    public boolean getIsBorrowed() {
+        return isBorrowed;
     }
 }

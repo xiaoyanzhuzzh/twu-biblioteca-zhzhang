@@ -49,6 +49,13 @@ public class MovieTest {
     }
 
     @Test
+    public void canSetMovieIsBorrowedTest() {
+
+        movie.setIsBorrowed(true);
+        assertEquals(true, movie.getIsBorrowed());
+    }
+
+    @Test
     public void constructorTest() {
 
         Movie currentMovie = new Movie(1, "The Social Network", "2010", "David Fincher", 8);
