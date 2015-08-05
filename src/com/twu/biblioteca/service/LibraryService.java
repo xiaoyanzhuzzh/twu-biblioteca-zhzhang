@@ -17,7 +17,7 @@ public class LibraryService {
 
     public String showMainMenuForCustomer() {
 
-         return "----------   Main  Menu   ----------\n" +
+         return "----------   Main  Menu of BIBLIOTECA  ----------\n" +
                 "[0] Quit Biblioteca System\n" +
                 "[1] List Books of Library\n" +
                 "[2] List Movies of Library\n" +

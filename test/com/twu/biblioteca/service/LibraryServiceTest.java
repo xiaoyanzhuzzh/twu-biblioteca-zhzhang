@@ -34,7 +34,7 @@ public class LibraryServiceTest {
 
     @Test
     public void canShowMainMenuForCustomerTest() {
-        String welcomeMessage = "----------   Main  Menu   ----------\n" +
+        String welcomeMessage = "----------   Main  Menu of BIBLIOTECA  ----------\n" +
                 "[0] Quit Biblioteca System\n" +
                 "[1] List Books of Library\n" +
                 "[2] List Movies of Library\n" +
