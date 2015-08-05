@@ -1,6 +1,5 @@
 package com.twu.biblioteca.service;
 
-import com.twu.biblioteca.entity.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,6 +12,13 @@ public class LibraryServiceTest {
     public void initLibraryService() {
 
         libraryService = new LibraryService();
+    }
+
+    @Test
+    public void canShowWelcomeMessageTest() {
+
+        String welcomeMessage = "----------   WELCOME TO BIBLIOTECA   ----------";
+        assertEquals(welcomeMessage, libraryService.showWelcomeMessage());
     }
 
     @Test
