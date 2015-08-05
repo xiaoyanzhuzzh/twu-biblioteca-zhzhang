@@ -20,10 +20,34 @@ public class LibraryService {
                 "[0] Quit Biblioteca System\n" +
                 "[1] List Books of Library\n" +
                 "[2] List Movies of Library\n" +
+                "[3] Show Your Own Information\n" +
                 "\nPlease Enter Your Choice :";
     }
 
-    public void userOptionOfMainMenu(Library library, User user) {
+    public User userLogin(Library library) {
+
+        System.out.println("Please enter your userName:");
+        String userName = InputReaderHelper.getInput();
+        System.out.println("Please enter your password:");
+        String password = InputReaderHelper.getInput();
+
+        User user = new User(userName, password);
+        user = userService.userLogin(user, library.getUsers());
+        if(user == null) {
+
+            System.out.println("\n----------   UserName Or Password Wrong   ----------\n");
+        } else if(user.getType().equals("customer")) {
+
+            System.out.println("----------   Dear " + userName + ", Login Success!   ----------\n");
+            customerOptionOfMainMenu(library, user);
+        } else if(user.getType().equals("librarian")) {
+
+            System.out.println("Dear " + userName + ", Login Success!\n");
+//            this.librarianOptionOfMainMenu();
+        }
+        return user;
+    }
+    public void customerOptionOfMainMenu(Library library, User user) {
 
         int input = -1;
         while(input != 0) {
@@ -34,13 +58,13 @@ public class LibraryService {
                     System.out.println("\n----------   Quit BIBLIOTECA System   ----------");
                     break;
                 case 1:
-                    this.userOptionOfBookMenu(library, user);
+                    this.customerOptionOfBookMenu(library, user);
                     break;
                 case 2:
-                    this.userOptionOfMovieMenu(library, user);
+                    this.customerOptionOfMovieMenu(library, user);
                     break;
                 case 3:
-                    this.userOptionOfMovieMenu(library, user);
+                    System.out.println(userService.showCustomerInformation(user));
                     break;
                 default:
                     System.out.println("\n----------   Select A Valid Option!   -----------\n");
@@ -48,7 +72,7 @@ public class LibraryService {
         }
     }
 
-    public void userOptionOfBookMenu(Library library, User user) {
+    public void customerOptionOfBookMenu(Library library, User user) {
 
         int input = -1;
         while(input != 0) {
@@ -72,10 +96,9 @@ public class LibraryService {
                     System.out.println("\n----------   Select A Valid Option!   -----------\n");
             }
         }
-
     }
 
-    public void userOptionOfMovieMenu(Library library, User user) {
+    public void customerOptionOfMovieMenu(Library library, User user) {
 
         int input = -1;
         while(input != 0) {
@@ -99,6 +122,5 @@ public class LibraryService {
                     System.out.println("\n----------   Select A Valid Option!   -----------\n");
             }
         }
-
     }
 }
