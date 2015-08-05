@@ -33,14 +33,40 @@ public class BookService {
         return books;
     }
 
+    public void userOptionOfBookMenu(Library library, User user) {
+
+        int input = -1;
+        while(input != 0) {
+            System.out.println(this.showMainMenuForCustomer());
+            input = Integer.parseInt(InputReaderHelper.getInput());
+            switch(input) {
+                case 0:
+                    System.out.println("\n---------- EXIT BIBLIOTECA ----------");
+                    break;
+                case 1:
+                    System.out.println(this.showBooksOfLibrary(library.getBooks()));
+                    break;
+                case 2:
+                    this.showCheckOutBooksMenu(library, user);
+                    break;
+                case 3:
+                    this.showReturnBooksMenu(user);
+                    break;
+                default:
+                    System.out.println("\nSelect A Valid Option!\n");
+            }
+        }
+
+    }
+
     public String showWelcomeMessage() {
         return "----------   WELCOME TO BIBLIOTECA   ----------";
     }
 
     public String showMainMenuForCustomer() {
 
-        return "----------   Main  Menu   ----------\n" +
-                "\n[0] Exit BIBLIOTECA\n" +
+        return "----------   Main  Menu  of Book Library ----------\n" +
+                "\n[0] Exit Book Library\n" +
                 "[1] List Books of Library\n" +
                 "[2] Check Out Book\n" +
                 "[3] Return Book\n" +
@@ -93,7 +119,6 @@ public class BookService {
 
         System.out.println("Please Enter the Book Number You Want to Check Out:");
         int checkOutNumber = Integer.parseInt(InputReaderHelper.getInput());
-
 
         try {
 
