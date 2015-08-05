@@ -4,7 +4,7 @@ import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.entity.User;
 import com.twu.biblioteca.helper.InputReaderHelper;
 import com.twu.biblioteca.service.BookService;
-import com.twu.biblioteca.service.MovieService;
+import com.twu.biblioteca.service.LibraryService;
 
 import java.util.List;
 
@@ -14,9 +14,8 @@ public class BibliotecaApp {
     public static void main(String[] args) {
 
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
-        BookService libraryService = new BookService();
-        MovieService movieService = new MovieService();
-        Library library = new Library(libraryService, movieService);
+        LibraryService libraryService = new LibraryService();
+        Library library = libraryService.initLibrary();
 
         User currentUser;
         do {
@@ -24,7 +23,8 @@ public class BibliotecaApp {
             currentUser = bibliotecaApp.userLogin(library.getUsers());
         } while(currentUser == null);
 
-        bibliotecaApp.userOption(libraryService, library, currentUser);
+        BookService bookService = new BookService();
+        bibliotecaApp.userOption(bookService, library, currentUser);
     }
 
     public User userLogin(List<User> users) {
@@ -44,24 +44,24 @@ public class BibliotecaApp {
         return null;
     }
 
-    public void userOption(BookService libraryService, Library library, User user) {
+    public void userOption(BookService bookService, Library library, User user) {
 
         int input = -1;
         while(input != 0) {
-            System.out.println(libraryService.showMainMenuForCustomer());
+            System.out.println(bookService.showMainMenuForCustomer());
             input = Integer.parseInt(InputReaderHelper.getInput());
             switch(input) {
                 case 0:
                     System.out.println("\n---------- EXIT BIBLIOTECA ----------");
                     break;
                 case 1:
-                    System.out.println(libraryService.showBooksOfLibrary(library.getBooks()));
+                    System.out.println(bookService.showBooksOfLibrary(library.getBooks()));
                     break;
                 case 2:
-                    libraryService.showCheckOutBooksMenu(library, user);
+                    bookService.showCheckOutBooksMenu(library, user);
                     break;
                 case 3:
-                    libraryService.showReturnBooksMenu(user);
+                    bookService.showReturnBooksMenu(user);
                     break;
                 default:
                     System.out.println("\nSelect A Valid Option!\n");
