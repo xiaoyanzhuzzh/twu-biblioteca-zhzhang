@@ -4,6 +4,9 @@ import com.twu.biblioteca.entity.Movie;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class MovieServiceTest {
@@ -42,6 +45,20 @@ public class MovieServiceTest {
                 "\nPlease Enter Your Choice :";
         assertEquals(result, movieService.showMoviesMenuForCustomer());
     }
+
+    @Test
+    public void canGetAvailableMovies() {
+
+        Movie movie = new Movie(1, "The Social Network", "2010", "David Fincher", 8);
+        List<Movie> movies = new ArrayList<Movie>();
+        movies.add(movie);
+
+        assertEquals(1, movieService.getAvailableMovies(movies).size());
+
+        movie.setIsBorrowed(true);
+        assertEquals(0, movieService.getAvailableMovies(movies).size());
+    }
+
 
 }
 

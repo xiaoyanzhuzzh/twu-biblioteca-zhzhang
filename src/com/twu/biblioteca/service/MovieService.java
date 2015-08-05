@@ -3,6 +3,7 @@ package com.twu.biblioteca.service;
 import com.twu.biblioteca.entity.Movie;
 
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 
 
@@ -30,5 +31,19 @@ public class MovieService {
                 "[2] Check Out Movie\n" +
                 "[3] Return Movie\n" +
                 "\nPlease Enter Your Choice :";
+    }
+
+    public List<Movie> getAvailableMovies(List<Movie> movies) {
+        
+        List<Movie> availableMovies = new ArrayList<Movie>();
+        for(Movie movie: movies) {
+
+            if(!movie.getIsBorrowed()) {
+
+                availableMovies.add(movie);
+            }
+        }
+
+        return availableMovies;
     }
 }
