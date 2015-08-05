@@ -21,37 +21,21 @@ public class LibraryTest {
     }
 
     @Test
-    public void initLibraryWithBooksAndUsersAndMovies() {
+    public void constructorTest() {
 
         BookService bookService = new BookService();
         MovieService movieService = new MovieService();
         LibraryService libraryService = new LibraryService();
         Library currentLibrary = new Library(bookService, movieService, libraryService);
 
-        List<Book> books = new ArrayList<Book>();
-        books.add(new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
-        books.add(new Book(2, "Head First Design Patterns", "Eric Freeman", "November 4, 2004"));
-        books.add(new Book(3, "Clean Code", "Robert C. Martin ", "August 11, 2008"));
-        books.add(new Book(4, "Programming in Scala", "Martin Odersky", "January 4, 2011"));
-        books.add(new Book(5, "Head First Java", "Kathy Sierra", "February 9, 2005"));
-        books.add(new Book(6, "JavaScript: The Good Parts", "Douglas Crockford", "May, 2008"));
+        Book book = new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
+        assertEquals(book.getAuthor(), currentLibrary.getBooks().get(0).getAuthor());
 
-        assertEquals(books.get(0).getAuthor(), currentLibrary.getBooks().get(0).getAuthor());
+        User user = new User("zhzhang", "1111", "customer");
+        assertEquals(user.getName(), currentLibrary.getUsers().get(0).getName());
 
-        List<User> users = new ArrayList<User>();
-        users.add(new User("zhzhang", "1111", "customer"));
-        users.add(new User("yanzi", "1111", "librarian"));
-        users.add(new User("xueqian", "1111", "librarian"));
-
-        assertEquals(users.get(0).getName(), currentLibrary.getUsers().get(0).getName());
-
-        List<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie(1, "The Social Network", "2010", "David Fincher", 8));
-        movies.add(new Movie(2, "Pirates of Silicon Valley", "1999", "Martyn Burke", 8));
-        movies.add(new Movie(3, "Steve Jobs - One Last Thing", "2011", "Mimi O'Connor", 9));
-        movies.add(new Movie(4, "The Matrix", "1999", "Andy Wachowski & Lana Wachowski", 9));
-
-        assertEquals(movies.get(0).getName(), currentLibrary.getMovies().get(0).getName());
+        Movie movie = new Movie(1, "The Social Network", "2010", "David Fincher", 8);
+        assertEquals(movie.getName(), currentLibrary.getMovies().get(0).getName());
 
     }
     @Test
