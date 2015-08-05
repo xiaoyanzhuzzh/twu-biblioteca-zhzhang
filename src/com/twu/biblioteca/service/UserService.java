@@ -28,4 +28,10 @@ public class UserService {
         }
         return result;
     }
+
+    public String showCustomerInformation(User customer) {
+        return "Name: " + customer.getName() + "\n" +
+                "Email: \n" +
+                "PhoneNumber: \n";
+    }
 }
