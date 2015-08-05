@@ -3,16 +3,6 @@ package com.twu.biblioteca.service;
 import com.twu.biblioteca.entity.Library;
 
 public class LibraryService {
-//
-//    private Library library;
-//
-//    public Library getLibrary() {
-//        return library;
-//    }
-//
-//    public void setLibrary(Library library) {
-//        this.library = library;
-//    }
 
     public Library initLibrary() {
         BookService libraryService = new BookService();
@@ -24,4 +14,13 @@ public class LibraryService {
         return "----------   WELCOME TO BIBLIOTECA   ----------";
     }
 
+
+    public String showMainMenuForCustomer() {
+
+         return "----------   Main  Menu   ----------\n" +
+                "[0] Quit Biblioteca System\n" +
+                "[1] List Books of Library\n" +
+                "[2] List Movies of Library\n" +
+                "\nPlease Enter Your Choice :";
+    }
 }
