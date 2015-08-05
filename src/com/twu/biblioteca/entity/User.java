@@ -8,6 +8,7 @@ public class User {
     private String password;
     private String type;
     private List<Book> borrowedBooks = new ArrayList<Book>();
+    private List<Movie> borrowedMovies = new ArrayList<Movie>();
 
     public User() {
 
@@ -54,5 +55,13 @@ public class User {
 
     public List<Book> getBorrowedBooks() {
         return borrowedBooks;
+    }
+
+    public List<Movie> getBorrowedMovies() {
+        return borrowedMovies;
+    }
+
+    public void setBorrowedMovies(List<Movie> borrowedMovies) {
+        this.borrowedMovies = borrowedMovies;
     }
 }

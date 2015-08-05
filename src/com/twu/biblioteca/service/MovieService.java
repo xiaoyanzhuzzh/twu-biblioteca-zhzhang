@@ -1,6 +1,8 @@
 package com.twu.biblioteca.service;
 
+import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.Movie;
+import com.twu.biblioteca.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +49,8 @@ public class MovieService {
 
 
     public String showMoviesOfLibrary(List<Movie> movies) {
-        List<Movie> movieList = this.getAvailableMovies(movies);
 
+        List<Movie> movieList = this.getAvailableMovies(movies);
         String moviesOfLibrary = "----------   MOVIE LIST OF BIBLIOTECA   ----------\n";
 
         for (int i = 0; i < movieList.size(); i++) {
@@ -56,5 +58,17 @@ public class MovieService {
         }
 
         return moviesOfLibrary;
+    }
+
+    public void checkOutMovie(Movie movie, User user) {
+
+        movie.setIsBorrowed(true);
+
+        List<Movie> borrowedMovies = new ArrayList<Movie>();
+        borrowedMovies.add(movie);
+
+        user.setBorrowedMovies(borrowedMovies);
+
+        System.out.println("Thank you! Enjoy the book");
     }
 }

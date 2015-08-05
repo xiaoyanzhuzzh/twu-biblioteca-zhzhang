@@ -79,16 +79,15 @@ public class MovieServiceTest {
         assertEquals(moviesOfLibrary, movieService.showMoviesOfLibrary(movieService.getAvailableMovies(movies)));
     }
 
-//    @Test
-//    public void canCheckOutBookTest() {
-//
-//        User user = new User("zhzhang", "1111", "customer");
-//        Book book = new Book(1, "Programming in Scala", "Martin Odersky", "January 4, 2011");
-//
-//        bookService.checkOutBook(book, user);
-//
-//        assertEquals(1, user.getBorrowedBooks().size());
-//        assertEquals(book.getName(), user.getBorrowedBooks().get(0).getName());
-//    }
+    @Test
+    public void canCheckOutBookTest() {
+
+        User user = new User("zhzhang", "1111", "customer");
+        Movie movie = new Movie(1, "The Social Network", "2010", "David Fincher", 8);
+        movieService.checkOutMovie(movie, user);
+
+        assertEquals(1, user.getBorrowedMovies().size());
+        assertEquals(movie.getName(), user.getBorrowedMovies().get(0).getName());
+    }
 }
 
