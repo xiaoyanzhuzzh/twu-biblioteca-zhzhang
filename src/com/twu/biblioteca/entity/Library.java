@@ -1,6 +1,7 @@
 package com.twu.biblioteca.entity;
 
 import com.twu.biblioteca.service.BookService;
+import com.twu.biblioteca.service.LibraryService;
 import com.twu.biblioteca.service.MovieService;
 
 import java.util.ArrayList;
@@ -16,11 +17,11 @@ public class Library {
 
     }
 
-    public Library(BookService bookService, MovieService movieService) {
+    public Library(BookService bookService, MovieService movieService, LibraryService libraryService) {
 
         this.books = bookService.initBooks();
-        this.users = bookService.initUsers();
         this.movies = movieService.initMovies();
+        this.users = libraryService.initUsers();
     }
 
     public void setBooks(List<Book> books) {

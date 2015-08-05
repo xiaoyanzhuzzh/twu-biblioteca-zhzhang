@@ -1,6 +1,7 @@
 package com.twu.biblioteca.entity;
 
 import com.twu.biblioteca.service.BookService;
+import com.twu.biblioteca.service.LibraryService;
 import com.twu.biblioteca.service.MovieService;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,9 +23,10 @@ public class LibraryTest {
     @Test
     public void initLibraryWithBooksAndUsersAndMovies() {
 
-        BookService libraryService = new BookService();
+        BookService bookService = new BookService();
         MovieService movieService = new MovieService();
-        Library currentLibrary = new Library(libraryService, movieService);
+        LibraryService libraryService = new LibraryService();
+        Library currentLibrary = new Library(bookService, movieService, libraryService);
 
         List<Book> books = new ArrayList<Book>();
         books.add(new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));

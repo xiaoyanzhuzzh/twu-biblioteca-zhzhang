@@ -12,35 +12,27 @@ import static org.junit.Assert.assertEquals;
 
 public class BookServiceTest {
 
-    private BookService libraryService;
+    private BookService bookService;
 
     @Before
     public void initLibraryService() {
 
-        libraryService = new BookService();
-    }
-
-    @Test
-    public void canInitUsersTest() {
-
-        User user = new User("zhzhang", "1111", "customer");
-        assertEquals(user.getName(), libraryService.initUsers().get(0).getName());
-        assertEquals(user.getPassword(), libraryService.initUsers().get(0).getPassword());
+        bookService = new BookService();
     }
 
     @Test
     public void canInitBooksTest() {
 
         Book book = new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
-        assertEquals(book.getName(), libraryService.initBooks().get(0).getName());
-        assertEquals(book.getAuthor(), libraryService.initBooks().get(0).getAuthor());
+        assertEquals(book.getName(), bookService.initBooks().get(0).getName());
+        assertEquals(book.getAuthor(), bookService.initBooks().get(0).getAuthor());
     }
 
     @Test
     public void canShowWelcomeMessageTest() {
 
         String welcomeMessage = "----------   WELCOME TO BIBLIOTECA   ----------";
-        assertEquals(welcomeMessage, libraryService.showWelcomeMessage());
+        assertEquals(welcomeMessage, bookService.showWelcomeMessage());
     }
 
     @Test
@@ -52,7 +44,7 @@ public class BookServiceTest {
                 "[2] Check Out Book\n" +
                 "[3] Return Book\n" +
                 "\nPlease Enter Your Choice :";
-        assertEquals(welcomeMessage, libraryService.showMainMenuForCustomer());
+        assertEquals(welcomeMessage, bookService.showMainMenuForCustomer());
     }
 
     @Test
@@ -62,10 +54,10 @@ public class BookServiceTest {
         List<Book> books = new ArrayList<Book>();
         books.add(book);
 
-        assertEquals(1, libraryService.getAvailableBooks(books).size());
+        assertEquals(1, bookService.getAvailableBooks(books).size());
 
         book.setIsBorrowed(true);
-        assertEquals(0, libraryService.getAvailableBooks(books).size());
+        assertEquals(0, bookService.getAvailableBooks(books).size());
     }
 
     @Test
@@ -77,10 +69,10 @@ public class BookServiceTest {
         books.add(new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999"));
         books.add(new Book(2, "Programming in Scala", "Martin Odersky", "January 4, 2011"));
 
-        for(int i = 0; i < libraryService.getAvailableBooks(books).size(); i++) {
-            booksOfLibrary += libraryService.getAvailableBooks(books).get(i).getBookInfo();
+        for(int i = 0; i < bookService.getAvailableBooks(books).size(); i++) {
+            booksOfLibrary += bookService.getAvailableBooks(books).get(i).getBookInfo();
         }
-        assertEquals(booksOfLibrary, libraryService.showBooksOfLibrary(libraryService.getAvailableBooks(books)));
+        assertEquals(booksOfLibrary, bookService.showBooksOfLibrary(bookService.getAvailableBooks(books)));
     }
 
     @Test
@@ -89,7 +81,7 @@ public class BookServiceTest {
         User user = new User("zhzhang", "1111", "customer");
         Book book = new Book(1, "Programming in Scala", "Martin Odersky", "January 4, 2011");
 
-        libraryService.checkOutBook(book, user);
+        bookService.checkOutBook(book, user);
 
         assertEquals(1, user.getBorrowedBooks().size());
         assertEquals(book.getName(), user.getBorrowedBooks().get(0).getName());
@@ -100,7 +92,7 @@ public class BookServiceTest {
 
         User user = initUserWithBorrowedBooks();
 
-        libraryService.returnBooks(user.getBorrowedBooks().get(0), user);
+        bookService.returnBooks(user.getBorrowedBooks().get(0), user);
         assertEquals(0, user.getBorrowedBooks().size());
     }
 

@@ -15,8 +15,12 @@ public class BibliotecaApp {
     public static void main(String[] args) {
 
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
+
         LibraryService libraryService = new LibraryService();
-        Library library = libraryService.initLibrary();
+        BookService bookService = new BookService();
+        MovieService movieService = new MovieService();
+
+        Library library = new Library(bookService, movieService, libraryService);
 
         User currentUser;
         do {
@@ -24,9 +28,7 @@ public class BibliotecaApp {
             currentUser = bibliotecaApp.userLogin(library.getUsers());
         } while(currentUser == null);
 
-        BookService bookService = new BookService();
-        MovieService movieService = new MovieService();
-        libraryService.userOptionOfMainMenu(bookService, movieService, library, currentUser);
+        libraryService.userOptionOfMainMenu(library, currentUser);
     }
 
     public User userLogin(List<User> users) {

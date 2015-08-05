@@ -19,17 +19,11 @@ public class LibraryServiceTest {
     }
 
     @Test
-    public void canInitLibraryTest() {
+    public void canInitUsersTest() {
 
         User user = new User("zhzhang", "1111", "customer");
-        Movie movie = new Movie(1, "The Social Network", "2010", "David Fincher", 8);
-        Book book = new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
-
-        Library library = libraryService.initLibrary();
-
-        assertEquals(user.getName(), library.getUsers().get(0).getName());
-        assertEquals(book.getName(), library.getBooks().get(0).getName());
-        assertEquals(movie.getName(), library.getMovies().get(0).getName());
+        assertEquals(user.getName(), libraryService.initUsers().get(0).getName());
+        assertEquals(user.getPassword(), libraryService.initUsers().get(0).getPassword());
     }
 
     @Test
