@@ -16,14 +16,6 @@ public class LibraryServiceTest {
     }
 
     @Test
-    public void canInitUsersTest() {
-
-        User user = new User("zhzhang", "1111", "customer");
-        assertEquals(user.getName(), libraryService.initUsers().get(0).getName());
-        assertEquals(user.getPassword(), libraryService.initUsers().get(0).getPassword());
-    }
-
-    @Test
     public void canShowMainMenuForCustomerTest() {
         String welcomeMessage = "----------   Main  Menu of BIBLIOTECA  ----------\n" +
                 "[0] Quit Biblioteca System\n" +

@@ -6,6 +6,7 @@ import com.twu.biblioteca.helper.InputReaderHelper;
 import com.twu.biblioteca.service.BookService;
 import com.twu.biblioteca.service.LibraryService;
 import com.twu.biblioteca.service.MovieService;
+import com.twu.biblioteca.service.UserService;
 
 import java.util.List;
 
@@ -17,10 +18,12 @@ public class BibliotecaApp {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
         LibraryService libraryService = new LibraryService();
+
         BookService bookService = new BookService();
         MovieService movieService = new MovieService();
+        UserService userService = new UserService();
 
-        Library library = new Library(bookService, movieService, libraryService);
+        Library library = new Library(bookService, movieService, userService);
 
         User currentUser;
         do {

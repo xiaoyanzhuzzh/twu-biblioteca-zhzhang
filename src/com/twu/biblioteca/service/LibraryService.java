@@ -4,28 +4,15 @@ import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.entity.User;
 import com.twu.biblioteca.helper.InputReaderHelper;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class LibraryService {
 
     private BookService bookService = new BookService();
     private MovieService movieService = new MovieService();
-
-    public List<User> initUsers() {
-
-        List<User> users = new ArrayList<User>();
-        users.add(new User("zhzhang", "1111", "customer"));
-        users.add(new User("yanzi", "1111", "librarian"));
-        users.add(new User("xueqian", "1111", "librarian"));
-
-        return users;
-    }
+    private UserService userService = new UserService();
 
     public String showWelcomeMessage() {
         return "----------   WELCOME TO BIBLIOTECA   ----------";
     }
-
 
     public String showMainMenuForCustomer() {
 

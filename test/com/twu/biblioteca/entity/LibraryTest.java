@@ -3,6 +3,7 @@ package com.twu.biblioteca.entity;
 import com.twu.biblioteca.service.BookService;
 import com.twu.biblioteca.service.LibraryService;
 import com.twu.biblioteca.service.MovieService;
+import com.twu.biblioteca.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,8 +26,9 @@ public class LibraryTest {
 
         BookService bookService = new BookService();
         MovieService movieService = new MovieService();
-        LibraryService libraryService = new LibraryService();
-        Library currentLibrary = new Library(bookService, movieService, libraryService);
+        UserService userService = new UserService();
+
+        Library currentLibrary = new Library(bookService, movieService, userService);
 
         Book book = new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
         assertEquals(book.getAuthor(), currentLibrary.getBooks().get(0).getAuthor());
