@@ -1,6 +1,8 @@
 package com.twu.biblioteca.service;
 
+import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.Movie;
+import com.twu.biblioteca.entity.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -60,5 +62,33 @@ public class MovieServiceTest {
     }
 
 
+    @Test
+    public void canShowMoviesOfLibraryTest() {
+
+        String moviesOfLibrary = "----------   MOVIE LIST OF BIBLIOTECA   ----------\n";
+
+        List<Movie> movies = new ArrayList<Movie>();
+        movies.add(new Movie(1, "The Social Network", "2010", "David Fincher", 8));
+        movies.add(new Movie(2, "Pirates of Silicon Valley", "1999", "Martyn Burke", 8));
+        movies.add(new Movie(3, "Steve Jobs - One Last Thing", "2011", "Mimi O'Connor", 9));
+        movies.add(new Movie(4, "The Matrix", "1999", "Andy Wachowski & Lana Wachowski", 9));
+
+        for(int i = 0; i < movieService.getAvailableMovies(movies).size(); i++) {
+            moviesOfLibrary += movieService.getAvailableMovies(movies).get(i).getMovieInfo();
+        }
+        assertEquals(moviesOfLibrary, movieService.showMoviesOfLibrary(movieService.getAvailableMovies(movies)));
+    }
+
+//    @Test
+//    public void canCheckOutBookTest() {
+//
+//        User user = new User("zhzhang", "1111", "customer");
+//        Book book = new Book(1, "Programming in Scala", "Martin Odersky", "January 4, 2011");
+//
+//        bookService.checkOutBook(book, user);
+//
+//        assertEquals(1, user.getBorrowedBooks().size());
+//        assertEquals(book.getName(), user.getBorrowedBooks().get(0).getName());
+//    }
 }
 

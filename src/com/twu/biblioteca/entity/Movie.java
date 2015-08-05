@@ -69,4 +69,10 @@ public class Movie {
     public boolean getIsBorrowed() {
         return isBorrowed;
     }
+
+    public String getMovieInfo() {
+
+        return "[" + this.getId() + "] " + "MovieName: " + this.getName() + ", Year: " + this.getYear() + ", Director: " + this.getDirector() +
+                "MovieRating: " + this.getRating() + "\n";
+    }
 }

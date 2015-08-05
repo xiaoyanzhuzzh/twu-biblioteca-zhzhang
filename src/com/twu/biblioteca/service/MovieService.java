@@ -3,9 +3,7 @@ package com.twu.biblioteca.service;
 import com.twu.biblioteca.entity.Movie;
 
 import java.util.ArrayList;
-import java.util.BitSet;
 import java.util.List;
-
 
 public class MovieService {
 
@@ -34,7 +32,7 @@ public class MovieService {
     }
 
     public List<Movie> getAvailableMovies(List<Movie> movies) {
-        
+
         List<Movie> availableMovies = new ArrayList<Movie>();
         for(Movie movie: movies) {
 
@@ -45,5 +43,18 @@ public class MovieService {
         }
 
         return availableMovies;
+    }
+
+
+    public String showMoviesOfLibrary(List<Movie> movies) {
+        List<Movie> movieList = this.getAvailableMovies(movies);
+
+        String moviesOfLibrary = "----------   MOVIE LIST OF BIBLIOTECA   ----------\n";
+
+        for (int i = 0; i < movieList.size(); i++) {
+            moviesOfLibrary += movieList.get(i).getMovieInfo();
+        }
+
+        return moviesOfLibrary;
     }
 }
