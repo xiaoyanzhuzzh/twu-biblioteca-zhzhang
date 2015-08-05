@@ -1,6 +1,5 @@
 package com.twu.biblioteca.service;
 
-import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.Movie;
 import com.twu.biblioteca.entity.User;
 
@@ -69,6 +68,14 @@ public class MovieService {
 
         user.setBorrowedMovies(borrowedMovies);
 
-        System.out.println("Thank you! Enjoy the book");
+        System.out.println("Thank you! Enjoy the Movie!");
+    }
+
+    public void returnMovies(Movie movie, User user) {
+
+        movie.setIsBorrowed(false);
+        List<Movie> borrowedMovies = user.getBorrowedMovies();
+        borrowedMovies.remove(movie);
+        System.out.println("Thank you for returning the movie!");
     }
 }

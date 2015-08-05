@@ -50,7 +50,7 @@ public class LibraryService {
                     this.userOptionOfBookMenu(library, user);
                     break;
                 case 2:
-//                    System.out.println(movieService.showMoviesOfLibrary(library.getMovies()));
+                    this.userOptionOfMovieMenu(library, user);
                     break;
                 case 3:
 //                    bookService.showReturnBooksMenu(user);
@@ -88,5 +88,30 @@ public class LibraryService {
 
     }
 
+    public void userOptionOfMovieMenu(Library library, User user) {
 
+        int input = -1;
+        while(input != 0) {
+            System.out.println(movieService.showMoviesMenuForCustomer());
+            input = Integer.parseInt(InputReaderHelper.getInput());
+            switch(input) {
+                case 0:
+                    System.out.println("\n----------   Exit Movie Library   ----------\n");
+                    this.showMainMenuForCustomer();
+                    break;
+                case 1:
+                    System.out.println(movieService.showMoviesOfLibrary(library.getMovies()));
+                    break;
+                case 2:
+//                    movieService.showCheckOutMoviesMenu(library, user);
+                    break;
+                case 3:
+//                    movieService.showReturnMoviesMenu(user);
+                    break;
+                default:
+                    System.out.println("\n----------   Select A Valid Option!   -----------\n");
+            }
+        }
+
+    }
 }

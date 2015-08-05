@@ -89,5 +89,28 @@ public class MovieServiceTest {
         assertEquals(1, user.getBorrowedMovies().size());
         assertEquals(movie.getName(), user.getBorrowedMovies().get(0).getName());
     }
+
+    @Test
+    public void canReturnBookTest() {
+
+        User user = initUserWithBorrowedMovies();
+
+        movieService.returnMovies(user.getBorrowedMovies().get(0), user);
+        assertEquals(0, user.getBorrowedMovies().size());
+    }
+
+    private User initUserWithBorrowedMovies() {
+
+        User user = new User("zhzhang", "1111", "customer");
+
+        List<Movie> borrowedMovies = new ArrayList<Movie>();
+        Movie movie = new Movie(1, "The Social Network", "2010", "David Fincher", 8);
+        movie.setIsBorrowed(true);
+
+        borrowedMovies.add(movie);
+
+        user.setBorrowedMovies(borrowedMovies);
+        return user;
+    }
 }
 
