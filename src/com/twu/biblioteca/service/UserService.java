@@ -16,4 +16,17 @@ public class UserService {
 
         return users;
     }
+
+    public User userLogin(User user, List<User> users) {
+
+        User result = null;
+        for(User aUser: users) {
+            if(aUser.getName().equals(user.getName()) && aUser.getPassword().equals(user.getPassword())) {
+                System.out.println("Dear " + user.getName() + ", Login Success!\n");
+                result = aUser;
+                break;
+            }
+        }
+        return result;
+    }
 }
