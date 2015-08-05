@@ -31,7 +31,7 @@ public class BookServiceTest {
     @Test
     public void canShowWelcomeMessageTest() {
 
-        String welcomeMessage = "----------   WELCOME TO BIBLIOTECA   ----------";
+        String welcomeMessage = "----------   WELCOME TO BOOK LIBRARY   ----------";
         assertEquals(welcomeMessage, bookService.showWelcomeMessage());
     }
 

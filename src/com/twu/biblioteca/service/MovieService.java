@@ -19,4 +19,7 @@ public class MovieService {
     }
 
 
+    public String showWelcomeMessage() {
+        return "----------   WELCOME TO MOVIE LIBRARY   ----------";
+    }
 }

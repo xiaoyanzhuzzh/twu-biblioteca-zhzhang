@@ -24,5 +24,12 @@ public class MovieServiceTest {
         assertEquals(movie.getRating(), movieService.initMovies().get(0).getRating());
     }
 
+    @Test
+    public void canShowWelcomeMessageTest() {
+
+        String welcomeMessage = "----------   WELCOME TO MOVIE LIBRARY   ----------";
+        assertEquals(welcomeMessage, movieService.showWelcomeMessage());
+    }
+
 }
 
