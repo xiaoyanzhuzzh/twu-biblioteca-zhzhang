@@ -33,32 +33,6 @@ public class BookService {
         return books;
     }
 
-    public void userOptionOfBookMenu(Library library, User user) {
-
-        int input = -1;
-        while(input != 0) {
-            System.out.println(this.showMainMenuForCustomer());
-            input = Integer.parseInt(InputReaderHelper.getInput());
-            switch(input) {
-                case 0:
-                    System.out.println("\n---------- EXIT BIBLIOTECA ----------");
-                    break;
-                case 1:
-                    System.out.println(this.showBooksOfLibrary(library.getBooks()));
-                    break;
-                case 2:
-                    this.showCheckOutBooksMenu(library, user);
-                    break;
-                case 3:
-                    this.showReturnBooksMenu(user);
-                    break;
-                default:
-                    System.out.println("\nSelect A Valid Option!\n");
-            }
-        }
-
-    }
-
     public String showWelcomeMessage() {
         return "----------   WELCOME TO BIBLIOTECA   ----------";
     }
@@ -125,7 +99,7 @@ public class BookService {
             this.checkOutBook(this.getBookById(checkOutNumber, books), user);
         } catch (Exception e) {
 
-            System.out.println("\nSelect A Valid Option!\n");
+            System.out.println("\n----------   Select A Valid Option!   ----------\n");
             e.getMessage();
         }
     }
@@ -170,15 +144,5 @@ public class BookService {
             }
         }
         return result;
-    }
-
-    private List<Integer> getBookIds(List<Book> books) {
-
-        List<Integer> ids = new ArrayList<Integer>();
-        for (Book book : books) {
-            ids.add(book.getId());
-        }
-
-        return ids;
     }
 }
