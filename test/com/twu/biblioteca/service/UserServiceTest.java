@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -35,5 +36,16 @@ public class UserServiceTest {
         users.add(new User("xueqian", "1111", "librarian"));
 
         assertEquals(user, userService.userLogin(user, users));
+    }
+
+    @Test
+    public void canShowCustomerInformationTest() {
+
+        User customer = new User("zhzhang", "1111", "customer");
+
+        String customerInformation = "Name: " + customer.getName() + "\n" +
+                                     "Email: \n" +
+                                     "PhoneNumber: \n";
+        assertEquals(customerInformation, userService.showCustomerInformation(customer));
     }
 }
