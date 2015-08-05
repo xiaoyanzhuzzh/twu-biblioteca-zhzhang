@@ -25,7 +25,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void canLoginTest() {
+    public void canUserLoginTest() {
 
         User user = new User("zhzhang", "1111", "customer");
 
