@@ -5,6 +5,7 @@ import com.twu.biblioteca.entity.User;
 import com.twu.biblioteca.helper.InputReaderHelper;
 import com.twu.biblioteca.service.BookService;
 import com.twu.biblioteca.service.LibraryService;
+import com.twu.biblioteca.service.MovieService;
 
 import java.util.List;
 
@@ -24,7 +25,8 @@ public class BibliotecaApp {
         } while(currentUser == null);
 
         BookService bookService = new BookService();
-        bibliotecaApp.userOption(bookService, library, currentUser);
+        MovieService movieService = new MovieService();
+        libraryService.userOptionOfMainMenu(bookService, movieService, library, currentUser);
     }
 
     public User userLogin(List<User> users) {
@@ -40,33 +42,7 @@ public class BibliotecaApp {
                 return new User(userName, password);
             }
         }
-        System.out.println("----UserName Or Password Wrong----");
+        System.out.println("\n----------   UserName Or Password Wrong   ----------\n");
         return null;
-    }
-
-    public void userOption(BookService bookService, Library library, User user) {
-
-        int input = -1;
-        while(input != 0) {
-            System.out.println(bookService.showMainMenuForCustomer());
-            input = Integer.parseInt(InputReaderHelper.getInput());
-            switch(input) {
-                case 0:
-                    System.out.println("\n---------- EXIT BIBLIOTECA ----------");
-                    break;
-                case 1:
-                    System.out.println(bookService.showBooksOfLibrary(library.getBooks()));
-                    break;
-                case 2:
-                    bookService.showCheckOutBooksMenu(library, user);
-                    break;
-                case 3:
-                    bookService.showReturnBooksMenu(user);
-                    break;
-                default:
-                    System.out.println("\nSelect A Valid Option!\n");
-            }
-        }
-
     }
 }
