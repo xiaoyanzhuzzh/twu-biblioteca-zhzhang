@@ -53,7 +53,7 @@ public class LibraryService {
                     this.userOptionOfMovieMenu(library, user);
                     break;
                 case 3:
-//                    bookService.showReturnBooksMenu(user);
+                    this.userOptionOfMovieMenu(library, user);
                     break;
                 default:
                     System.out.println("\n----------   Select A Valid Option!   -----------\n");
