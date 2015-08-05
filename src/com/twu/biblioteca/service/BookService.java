@@ -27,7 +27,7 @@ public class BookService {
         return "----------   WELCOME TO BOOK LIBRARY   ----------";
     }
 
-    public String showMainMenuForCustomer() {
+    public String showBooksMenuForCustomer() {
 
         return "----------   Main  Menu  of Book Library ----------\n" +
                 "\n[0] Exit Book Library\n" +

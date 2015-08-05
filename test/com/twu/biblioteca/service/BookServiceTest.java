@@ -15,7 +15,7 @@ public class BookServiceTest {
     private BookService bookService;
 
     @Before
-    public void initLibraryService() {
+    public void initBookService() {
 
         bookService = new BookService();
     }
@@ -36,7 +36,7 @@ public class BookServiceTest {
     }
 
     @Test
-    public void canShowMainMenuForCustomerTest() {
+    public void canShowBooksMenuForCustomerTest() {
 
         String welcomeMessage = "----------   Main  Menu  of Book Library ----------\n" +
                 "\n[0] Exit Book Library\n" +
@@ -44,7 +44,7 @@ public class BookServiceTest {
                 "[2] Check Out Book\n" +
                 "[3] Return Book\n" +
                 "\nPlease Enter Your Choice :";
-        assertEquals(welcomeMessage, bookService.showMainMenuForCustomer());
+        assertEquals(welcomeMessage, bookService.showBooksMenuForCustomer());
     }
 
     @Test

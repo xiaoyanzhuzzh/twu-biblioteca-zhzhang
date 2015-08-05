@@ -65,7 +65,7 @@ public class LibraryService {
 
         int input = -1;
         while(input != 0) {
-            System.out.println(bookService.showMainMenuForCustomer());
+            System.out.println(bookService.showBooksMenuForCustomer());
             input = Integer.parseInt(InputReaderHelper.getInput());
             switch(input) {
                 case 0:

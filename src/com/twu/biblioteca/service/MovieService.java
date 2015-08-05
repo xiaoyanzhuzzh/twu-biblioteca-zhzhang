@@ -5,6 +5,7 @@ import com.twu.biblioteca.entity.Movie;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MovieService {
 
     public List<Movie> initMovies() {
@@ -18,8 +19,16 @@ public class MovieService {
         return movies;
     }
 
-
     public String showWelcomeMessage() {
         return "----------   WELCOME TO MOVIE LIBRARY   ----------";
+    }
+
+    public String showMoviesMenuForCustomer() {
+        return "----------   Main Menu of Movie Library ----------\n" +
+                "\n[0] Exit Movie Library\n" +
+                "[1] List Movies of Library\n" +
+                "[2] Check Out Movie\n" +
+                "[3] Return Movie\n" +
+                "\nPlease Enter Your Choice :";
     }
 }
