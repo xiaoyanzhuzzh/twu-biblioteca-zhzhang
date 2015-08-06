@@ -21,6 +21,7 @@ public class LibraryServiceTest {
         assertEquals(welcomeMessage, libraryService.showWelcomeMessage());
     }
 
+    
     @Test
     public void canShowMainMenuForCustomerTest() {
         String welcomeMessage = "----------   Main  Menu of BIBLIOTECA  ----------\n" +
