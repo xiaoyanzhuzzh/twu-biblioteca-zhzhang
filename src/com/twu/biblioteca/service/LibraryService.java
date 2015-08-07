@@ -39,7 +39,7 @@ public class LibraryService {
 
     public User userLogin(Library library) {
 
-        System.out.println("Please enter your userName:");
+        System.out.println("Please enter your userName(LIB-xxxx):");
         String userName = InputReaderHelper.getInput();
         System.out.println("Please enter your password:");
         String password = InputReaderHelper.getInput();

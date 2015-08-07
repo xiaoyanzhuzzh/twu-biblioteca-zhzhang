@@ -10,9 +10,9 @@ public class UserService {
     public List<User> initUsers() {
 
         List<User> users = new ArrayList<User>();
-        users.add(new User("zhzhang", "1111", "customer", "zhzhang@163.com", "18729591184"));
-        users.add(new User("yanzi", "1111", "librarian", "zhzhang@163.com", "18729591184"));
-        users.add(new User("xueqian", "1111", "librarian", "zhzhang@163.com", "18729591184"));
+        users.add(new User("LIB-0000", "1111", "customer", "zhzhang@163.com", "18729591184"));
+        users.add(new User("LIB-0001", "1111", "librarian", "zhzhang@163.com", "18729591184"));
+        users.add(new User("LIB-0002", "1111", "librarian", "zhzhang@163.com", "18729591184"));
 
         return users;
     }
@@ -31,8 +31,8 @@ public class UserService {
 
     public String showCustomerInformation(User customer) {
         return "Name: " + customer.getName() + "\n" +
-                "Email: \n" +
-                "PhoneNumber: \n";
+                "Email: " + customer.getEmail() +  "\n" +
+                "PhoneNumber: " + customer.getPhoneNumber() + "\n";
     }
 
     public List<User> getCustomersWithBorrowedBooks(List<User> users) {
