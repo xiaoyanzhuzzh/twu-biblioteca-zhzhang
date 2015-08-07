@@ -43,13 +43,34 @@ public class LibraryService {
         } else if(user.getType().equals("librarian")) {
 
             System.out.println("Dear " + userName + ", Login Success!\n");
-            this.librarianOptionOfMainMenu();
+            this.librarianOptionOfMainMenu(library, user);
         }
         return user;
     }
 
-    private void librarianOptionOfMainMenu() {
+    private void librarianOptionOfMainMenu(Library library, User user) {
 
+        int input = -1;
+        while(input != 0) {
+            System.out.println(this.showMainMenuForCustomer());
+            input = Integer.parseInt(InputReaderHelper.getInput());
+            switch(input) {
+                case 0:
+                    System.out.println("\n----------   Quit BIBLIOTECA System   ----------");
+                    break;
+                case 1:
+//                    this.librarianOptionOfBookMenu(library, user);
+                    break;
+                case 2:
+//                    this.librarianOptionOfMovieMenu(library, user);
+                    break;
+                case 3:
+//                    System.out.println(userService.showCustomerInformation(user));
+                    break;
+                default:
+                    System.out.println("\n----------   Select A Valid Option!   -----------\n");
+            }
+        }
     }
 
     private void customerOptionOfMainMenu(Library library, User user) {
