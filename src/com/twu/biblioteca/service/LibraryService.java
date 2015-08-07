@@ -52,7 +52,7 @@ public class LibraryService {
 
         int input = -1;
         while(input != 0) {
-            System.out.println(this.showMainMenuForCustomer());
+            System.out.println(this.showMainMenuForLibrarian());
             input = Integer.parseInt(InputReaderHelper.getInput());
             switch(input) {
                 case 0:
