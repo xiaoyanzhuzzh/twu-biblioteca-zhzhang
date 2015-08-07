@@ -1,6 +1,7 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.entity.Book;
+import com.twu.biblioteca.entity.Movie;
 import com.twu.biblioteca.entity.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +11,8 @@ import java.util.Currency;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class UserServiceTest {
 
     private UserService userService;
@@ -66,6 +69,26 @@ public class UserServiceTest {
         users.add(user);
 
         assertEquals(user.getName(), userService.showCustomersWithBorrowedBooks(users).get(0).getName());
+    }
+
+    @Test
+    public void canShowCustomersWithBorrowedMoviesTest() {
+
+        User user = new User("zhzhang", "1111", "customer");
+
+        List<Movie> movies = new ArrayList<Movie>();
+
+        movies.add(new Movie(2, "Pirates of Silicon Valley", "1999", "Martyn Burke", 8, true));
+        movies.add(new Movie(3, "Steve Jobs - One Last Thing", "2011", "Mimi O'Connor", 9, true));
+        movies.add(new Movie(4, "The Matrix", "1999", "Andy Wachowski & Lana Wachowski", 9, true));
+
+        user.setBorrowedMovies(movies);
+
+        List<User> users = new ArrayList<User>();
+        users.add(new User("zzh", "1111", "customer"));
+        users.add(user);
+
+        assertEquals(user.getName(), userService.showCustomersWithBorrowedMovies(users).get(0).getName());
 
     }
 }

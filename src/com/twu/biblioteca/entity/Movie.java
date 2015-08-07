@@ -9,6 +9,10 @@ public class Movie {
     private int rating;
     private boolean isBorrowed;
 
+    public Movie() {
+
+    }
+
     public Movie(int id, String name, String year, String director, int rating) {
         this.id = id;
         this.name = name;
@@ -18,8 +22,13 @@ public class Movie {
         this.isBorrowed = false;
     }
 
-    public Movie() {
-
+    public Movie(int id, String name, String year, String director, int rating, boolean isBorrowed) {
+        this.id = id;
+        this.name = name;
+        this.year = year;
+        this.director = director;
+        this.rating = rating;
+        this.isBorrowed = isBorrowed;
     }
 
     public int getId() {
