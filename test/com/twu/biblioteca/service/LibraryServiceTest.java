@@ -32,4 +32,15 @@ public class LibraryServiceTest {
         assertEquals(welcomeMessage, libraryService.showMainMenuForCustomer());
     }
 
+    @Test
+    public void canShowMainMenuForLibrarianTest() {
+        String welcomeMessage = "----------   Main  Menu of BIBLIOTECA  ----------\n" +
+                "[0] Quit Biblioteca System\n" +
+                "[1] Enter Book Library\n" +
+                "[2] Enter Movie Library\n" +
+                "[3] Show Who Borrow Book & Movie\n" +
+                "\nPlease Enter Your Choice :";
+        assertEquals(welcomeMessage, libraryService.showMainMenuForLibrarian());
+    }
+
 }
