@@ -2,6 +2,7 @@ package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.Library;
+import com.twu.biblioteca.entity.Movie;
 import com.twu.biblioteca.entity.User;
 import com.twu.biblioteca.helper.InputReaderHelper;
 
@@ -71,6 +72,22 @@ public class LibraryService {
             for(Book book: customer.getBorrowedBooks()) {
 
                 result += book.getBookInfo();
+            }
+        }
+        return result;
+    }
+
+    public String showCustomersWithBorrowedMovies(List<User> users) {
+
+        List<User> customersWithBorrowedMovies = userService.getCustomersWithBorrowedMovies(users);
+
+        String result = "\n----------   Who Borrow Movies?   ----------\n";
+        for(User customer: customersWithBorrowedMovies) {
+
+            result += "Customer: " + customer.getName() + "\n";
+            for(Movie movie: customer.getBorrowedMovies()) {
+
+                result += movie.getMovieInfo();
             }
         }
         return result;

@@ -1,6 +1,7 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.entity.Book;
+import com.twu.biblioteca.entity.Movie;
 import com.twu.biblioteca.entity.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -72,4 +73,28 @@ public class LibraryServiceTest {
         assertEquals(result, libraryService.showCustomersWithBorrowedBooks(users));
     }
 
+    @Test
+    public void canShowCustomersWithBorrowedMoviesTest() {
+
+        List<User> users = new ArrayList<User>();
+
+        User user = new User("zhzhang", "1111", "customer");
+
+        List<Movie> movies = new ArrayList<Movie>();
+
+        movies.add(new Movie(2, "Pirates of Silicon Valley", "1999", "Martyn Burke", 8, true));
+        movies.add(new Movie(3, "Steve Jobs - One Last Thing", "2011", "Mimi O'Connor", 9, true));
+        movies.add(new Movie(4, "The Matrix", "1999", "Andy Wachowski & Lana Wachowski", 9, true));
+
+        user.setBorrowedMovies(movies);
+        users.add(user);
+
+        String result = "\n----------   Who Borrow Movies?   ----------\n";
+        result += "Customer: " + user.getName() + "\n";
+        for(Movie movie: movies) {
+            result += movie.getMovieInfo();
+        }
+        System.out.println(result);
+        assertEquals(result, libraryService.showCustomersWithBorrowedMovies(users));
+    }
 }
