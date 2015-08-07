@@ -24,6 +24,15 @@ public class LibraryService {
                 "\nPlease Enter Your Choice :";
     }
 
+    public String showMainMenuForLibrarian() {
+        return "----------   Main  Menu of BIBLIOTECA  ----------\n" +
+                "[0] Quit Biblioteca System\n" +
+                "[1] Enter Book Library\n" +
+                "[2] Enter Movie Library\n" +
+                "[3] Show Who Borrow Book & Movie\n" +
+                "\nPlease Enter Your Choice :";
+    }
+
     public User userLogin(Library library) {
 
         System.out.println("Please enter your userName:");
@@ -59,10 +68,10 @@ public class LibraryService {
                     System.out.println("\n----------   Quit BIBLIOTECA System   ----------");
                     break;
                 case 1:
-//                    this.librarianOptionOfBookMenu(library, user);
+                    this.librarianOptionOfBookMenu(library, user);
                     break;
                 case 2:
-//                    this.librarianOptionOfMovieMenu(library, user);
+                    this.librarianOptionOfMovieMenu(library, user);
                     break;
                 case 3:
 //                    System.out.println(userService.showCustomerInformation(user));
@@ -71,6 +80,14 @@ public class LibraryService {
                     System.out.println("\n----------   Select A Valid Option!   -----------\n");
             }
         }
+    }
+
+    private void librarianOptionOfMovieMenu(Library library, User user) {
+        this.customerOptionOfMovieMenu(library, user);
+    }
+
+    private void librarianOptionOfBookMenu(Library library, User user) {
+        this.customerOptionOfBookMenu(library, user);
     }
 
     private void customerOptionOfMainMenu(Library library, User user) {
@@ -148,14 +165,5 @@ public class LibraryService {
                     System.out.println("\n----------   Select A Valid Option!   -----------\n");
             }
         }
-    }
-
-    public String showMainMenuForLibrarian() {
-        return "----------   Main  Menu of BIBLIOTECA  ----------\n" +
-                "[0] Quit Biblioteca System\n" +
-                "[1] Enter Book Library\n" +
-                "[2] Enter Movie Library\n" +
-                "[3] Show Who Borrow Book & Movie\n" +
-                "\nPlease Enter Your Choice :";
     }
 }
