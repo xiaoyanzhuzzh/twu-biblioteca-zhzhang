@@ -24,6 +24,20 @@ public class UserTest {
     }
 
     @Test
+    public void canSetUserEmailTest() {
+
+        user.setEmail("zhzhang@163.com");
+        assertEquals("zhzhang@163.com", user.getEmail());
+    }
+
+    @Test
+    public void canSetUserPhoneNumberTest() {
+
+        user.setPhoneNumber("18729591184");
+        assertEquals("18729591184", user.getPhoneNumber());
+    }
+
+    @Test
     public void canSetUserPasswordTest() {
 
         user.setPassword("1111");
