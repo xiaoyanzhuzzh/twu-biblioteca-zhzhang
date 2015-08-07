@@ -1,6 +1,5 @@
 package com.twu.biblioteca.service;
 
-import com.twu.biblioteca.entity.Movie;
 import com.twu.biblioteca.entity.User;
 
 import java.util.ArrayList;
@@ -36,36 +35,36 @@ public class UserService {
                 "PhoneNumber: \n";
     }
 
-    public List<User> showCustomersWithBorrowedBooks(List<User> users) {
+    public List<User> getCustomersWithBorrowedBooks(List<User> users) {
 
         List<User> customers = this.getCustomers(users);
 
-        List<User> customerWithBorrowedBooks = new ArrayList<User>();
+        List<User> customersWithBorrowedBooks = new ArrayList<User>();
 
         for (User customer : customers) {
 
             if (customer.getBorrowedBooks().size() != 0) {
 
-                customerWithBorrowedBooks.add(customer);
+                customersWithBorrowedBooks.add(customer);
             }
         }
-        return customerWithBorrowedBooks;
+        return customersWithBorrowedBooks;
     }
 
-    public List<User> showCustomersWithBorrowedMovies(List<User> users) {
+    public List<User> getCustomersWithBorrowedMovies(List<User> users) {
 
         List<User> customers = this.getCustomers(users);
 
-        List<User> customerWithBorrowedMovies = new ArrayList<User>();
+        List<User> customersWithBorrowedMovies = new ArrayList<User>();
 
         for (User customer : customers) {
 
             if (customer.getBorrowedMovies().size() != 0) {
 
-                customerWithBorrowedMovies.add(customer);
+                customersWithBorrowedMovies.add(customer);
             }
         }
-        return customerWithBorrowedMovies;
+        return customersWithBorrowedMovies;
     }
 
     private List<User> getCustomers(List<User> users) {

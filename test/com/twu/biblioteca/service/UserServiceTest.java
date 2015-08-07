@@ -54,7 +54,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void canShowCustomersWithBorrowedBooksTest() {
+    public void canGetCustomersWithBorrowedBooksTest() {
 
         User user = new User("zhzhang", "1111", "customer");
 
@@ -68,11 +68,11 @@ public class UserServiceTest {
         users.add(new User("zzh", "1111", "customer"));
         users.add(user);
 
-        assertEquals(user.getName(), userService.showCustomersWithBorrowedBooks(users).get(0).getName());
+        assertEquals(user.getName(), userService.getCustomersWithBorrowedBooks(users).get(0).getName());
     }
 
     @Test
-    public void canShowCustomersWithBorrowedMoviesTest() {
+    public void canGetCustomersWithBorrowedMoviesTest() {
 
         User user = new User("zhzhang", "1111", "customer");
 
@@ -88,7 +88,7 @@ public class UserServiceTest {
         users.add(new User("zzh", "1111", "customer"));
         users.add(user);
 
-        assertEquals(user.getName(), userService.showCustomersWithBorrowedMovies(users).get(0).getName());
+        assertEquals(user.getName(), userService.getCustomersWithBorrowedMovies(users).get(0).getName());
 
     }
 }

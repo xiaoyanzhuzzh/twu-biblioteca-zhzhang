@@ -1,8 +1,11 @@
 package com.twu.biblioteca.service;
 
+import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.entity.User;
 import com.twu.biblioteca.helper.InputReaderHelper;
+
+import java.util.List;
 
 public class LibraryService {
 
@@ -55,6 +58,22 @@ public class LibraryService {
             this.librarianOptionOfMainMenu(library, user);
         }
         return user;
+    }
+
+    public String showCustomersWithBorrowedBooks(List<User> users) {
+
+        List<User> customersWithBorrowedBooks = userService.getCustomersWithBorrowedBooks(users);
+
+        String result = "\n----------   Who Borrow Books?   ----------\n";
+        for(User customer: customersWithBorrowedBooks) {
+
+            result += "Customer: " + customer.getName() + "\n";
+            for(Book book: customer.getBorrowedBooks()) {
+
+                result += book.getBookInfo();
+            }
+        }
+        return result;
     }
 
     private void librarianOptionOfMainMenu(Library library, User user) {
