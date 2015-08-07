@@ -37,6 +37,31 @@ public class UserService {
 
     public List<User> showCustomersWithBorrowedBooks(List<User> users) {
 
-        return users;
+        List<User> customers = this.getCustomers(users);
+
+        List<User> customerWithBorrowedBooks = new ArrayList<User>();
+
+        for (User customer : customers) {
+
+            if (customer.getBorrowedBooks().size() != 0) {
+
+                customerWithBorrowedBooks.add(customer);
+            }
+        }
+        return customerWithBorrowedBooks;
+    }
+
+    private List<User> getCustomers(List<User> users) {
+
+        List<User> customers = new ArrayList<User>();
+
+        for(User user: users) {
+
+            if(user.getType().equals("customer")) {
+
+                customers.add(user);
+            }
+        }
+        return customers;
     }
 }
