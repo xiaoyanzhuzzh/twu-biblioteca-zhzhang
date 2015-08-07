@@ -34,4 +34,9 @@ public class UserService {
                 "Email: \n" +
                 "PhoneNumber: \n";
     }
+
+    public List<User> showCustomersWithBorrowedBooks(List<User> users) {
+
+        return users;
+    }
 }
