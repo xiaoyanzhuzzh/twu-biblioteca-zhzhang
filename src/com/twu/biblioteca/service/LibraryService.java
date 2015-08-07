@@ -56,7 +56,7 @@ public class LibraryService {
         } else if(user.getType().equals("librarian")) {
 
             System.out.println("Dear " + userName + ", Login Success!\n");
-            this.librarianOptionOfMainMenu(library, user);
+            this.librarianOptionOfMainMenu(library);
         }
         return user;
     }
@@ -93,7 +93,7 @@ public class LibraryService {
         return result;
     }
 
-    private void librarianOptionOfMainMenu(Library library, User user) {
+    private void librarianOptionOfMainMenu(Library library) {
 
         int input = -1;
         while(input != 0) {
@@ -104,13 +104,14 @@ public class LibraryService {
                     System.out.println("\n----------   Quit BIBLIOTECA System   ----------");
                     break;
                 case 1:
-                    this.librarianOptionOfBookMenu(library, user);
+                    this.librarianOptionOfBookMenu(library);
                     break;
                 case 2:
-                    this.librarianOptionOfMovieMenu(library, user);
+                    this.librarianOptionOfMovieMenu(library);
                     break;
                 case 3:
-//                    System.out.println(userService.showCustomerInformation(user));
+                    System.out.println(this.showCustomersWithBorrowedBooks(library.getUsers()));
+                    System.out.println(this.showCustomersWithBorrowedMovies(library.getUsers()));
                     break;
                 default:
                     System.out.println("\n----------   Select A Valid Option!   -----------\n");
@@ -118,12 +119,12 @@ public class LibraryService {
         }
     }
 
-    private void librarianOptionOfMovieMenu(Library library, User user) {
-        this.customerOptionOfMovieMenu(library, user);
+    private void librarianOptionOfMovieMenu(Library library) {
+        System.out.println(movieService.showMoviesOfLibrary(library.getMovies()));
     }
 
-    private void librarianOptionOfBookMenu(Library library, User user) {
-        this.customerOptionOfBookMenu(library, user);
+    private void librarianOptionOfBookMenu(Library library) {
+        System.out.println(bookService.showBooksOfLibrary(library.getBooks()));
     }
 
     private void customerOptionOfMainMenu(Library library, User user) {
