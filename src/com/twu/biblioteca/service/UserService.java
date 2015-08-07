@@ -10,9 +10,9 @@ public class UserService {
     public List<User> initUsers() {
 
         List<User> users = new ArrayList<User>();
-        users.add(new User("zhzhang", "1111", "customer"));
-        users.add(new User("yanzi", "1111", "librarian"));
-        users.add(new User("xueqian", "1111", "librarian"));
+        users.add(new User("zhzhang", "1111", "customer", "zhzhang@163.com", "18729591184"));
+        users.add(new User("yanzi", "1111", "librarian", "zhzhang@163.com", "18729591184"));
+        users.add(new User("xueqian", "1111", "librarian", "zhzhang@163.com", "18729591184"));
 
         return users;
     }

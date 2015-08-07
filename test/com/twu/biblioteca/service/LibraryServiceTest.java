@@ -54,7 +54,7 @@ public class LibraryServiceTest {
 
         List<User> users = new ArrayList<User>();
 
-        User user = new User("zhzhang", "1111", "customer");
+        User user = new User("zhzhang", "1111", "customer", "zhznag@163.com", "18729591184");
 
         List<Book> books = new ArrayList<Book>();
         books.add(new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999", true));
@@ -78,7 +78,7 @@ public class LibraryServiceTest {
 
         List<User> users = new ArrayList<User>();
 
-        User user = new User("zhzhang", "1111", "customer");
+        User user = new User("zhzhang", "1111", "customer", "zhznag@163.com", "18729591184");
 
         List<Movie> movies = new ArrayList<Movie>();
 

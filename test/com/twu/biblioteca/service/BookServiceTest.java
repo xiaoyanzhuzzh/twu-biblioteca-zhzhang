@@ -78,7 +78,7 @@ public class BookServiceTest {
     @Test
     public void canCheckOutBookTest() {
 
-        User user = new User("zhzhang", "1111", "customer");
+        User user = new User("zhzhang", "1111", "customer", "zhznag@163.com", "18729591184");
         Book book = new Book(1, "Programming in Scala", "Martin Odersky", "January 4, 2011");
 
         bookService.checkOutBook(book, user);
@@ -98,7 +98,7 @@ public class BookServiceTest {
 
     private User initUserWithBorrowedBooks() {
 
-        User user = new User("zhzhang", "1111", "customer");
+        User user = new User("zhzhang", "1111", "customer", "zhznag@163.com", "18729591184");
 
         List<Book> borrowedBooks = new ArrayList<Book>();
         Book book = new Book(1, "Programming in Scala", "Martin Odersky", "January 4, 2011", true);

@@ -16,15 +16,17 @@ public class User {
 
     }
 
-    public User(String name, String password, String type) {
-        this.name = name;
-        this.password = password;
-        this.type = type;
-    }
-
     public User(String name, String password) {
         this.name = name;
         this.password = password;
+    }
+
+    public User(String name, String password, String type, String email, String phoneNumber) {
+        this.name = name;
+        this.password = password;
+        this.type = type;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     public void setName(String name) {

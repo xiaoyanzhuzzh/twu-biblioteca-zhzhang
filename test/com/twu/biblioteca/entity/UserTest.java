@@ -62,7 +62,7 @@ public class UserTest {
     @Test
     public void constructorTest() {
 
-        user = new User("zhzhang", "1111", "customer");
+        user = new User("zhzhang", "1111", "customer", "zhzhang@163.com", "18729591184");
         assertEquals("zhzhang", user.getName());
         assertEquals("1111", user.getPassword());
         assertEquals("customer", user.getType());

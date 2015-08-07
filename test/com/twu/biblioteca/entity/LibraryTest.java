@@ -33,7 +33,7 @@ public class LibraryTest {
         Book book = new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999");
         assertEquals(book.getAuthor(), currentLibrary.getBooks().get(0).getAuthor());
 
-        User user = new User("zhzhang", "1111", "customer");
+        User user = new User("zhzhang", "1111", "customer", "zhznag@163.com", "18729591184");
         assertEquals(user.getName(), currentLibrary.getUsers().get(0).getName());
 
         Movie movie = new Movie(1, "The Social Network", "2010", "David Fincher", 8);
@@ -54,7 +54,7 @@ public class LibraryTest {
     public void canSetUsersTest() {
 
         List<User> users = new ArrayList<User>();
-        users.add(new User("zhzhang", "1111", "customer"));
+        users.add(new User("zhzhang", "1111", "customer", "zhznag@163.com", "18729591184"));
 
         library.setUsers(users);
         assertEquals(users, library.getUsers());

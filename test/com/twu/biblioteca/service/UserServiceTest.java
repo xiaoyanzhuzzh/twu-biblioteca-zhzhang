@@ -25,19 +25,19 @@ public class UserServiceTest {
     @Test
     public void canInitUsersTest() {
 
-        User user = new User("zhzhang", "1111", "customer");
+        User user = new User("zhzhang", "1111", "customer", "zhznag@163.com", "18729591184");
         assertEquals(user.getName(), userService.initUsers().get(0).getName());
     }
 
     @Test
     public void canUserLoginTest() {
 
-        User user = new User("zhzhang", "1111", "customer");
+        User user = new User("zhzhang", "1111", "customer", "zhznag@163.com", "18729591184");
 
         List<User> users = new ArrayList<User>();
         users.add(user);
-        users.add(new User("yanzi", "1111", "librarian"));
-        users.add(new User("xueqian", "1111", "librarian"));
+        users.add(new User("yanzi", "1111", "librarian", "zhznag@163.com", "18729591184"));
+        users.add(new User("xueqian", "1111", "librarian", "zhznag@163.com", "18729591184"));
 
         assertEquals(user, userService.userLogin(user, users));
     }
@@ -45,7 +45,7 @@ public class UserServiceTest {
     @Test
     public void canShowCustomerInformationTest() {
 
-        User customer = new User("zhzhang", "1111", "customer");
+        User customer = new User("zhzhang", "1111", "customer", "zhznag@163.com", "18729591184");
 
         String customerInformation = "Name: " + customer.getName() + "\n" +
                                      "Email: \n" +
@@ -56,7 +56,7 @@ public class UserServiceTest {
     @Test
     public void canGetCustomersWithBorrowedBooksTest() {
 
-        User user = new User("zhzhang", "1111", "customer");
+        User user = new User("zhzhang", "1111", "customer", "zhznag@163.com", "18729591184");
 
         List<Book> books = new ArrayList<Book>();
         books.add(new Book(1, "Refactoring: Improving the Design of Existing Code", "Martin Fowler", "July 8, 1999", true));
@@ -65,7 +65,7 @@ public class UserServiceTest {
         user.setBorrowedBooks(books);
 
         List<User> users = new ArrayList<User>();
-        users.add(new User("zzh", "1111", "customer"));
+        users.add(new User("zzh", "1111", "customer", "zhznag@163.com", "18729591184"));
         users.add(user);
 
         assertEquals(user.getName(), userService.getCustomersWithBorrowedBooks(users).get(0).getName());
@@ -74,7 +74,7 @@ public class UserServiceTest {
     @Test
     public void canGetCustomersWithBorrowedMoviesTest() {
 
-        User user = new User("zhzhang", "1111", "customer");
+        User user = new User("zhzhang", "1111", "customer", "zhznag@163.com", "18729591184");
 
         List<Movie> movies = new ArrayList<Movie>();
 
@@ -85,7 +85,7 @@ public class UserServiceTest {
         user.setBorrowedMovies(movies);
 
         List<User> users = new ArrayList<User>();
-        users.add(new User("zzh", "1111", "customer"));
+        users.add(new User("zzh", "1111", "customer", "zhznag@163.com", "18729591184"));
         users.add(user);
 
         assertEquals(user.getName(), userService.getCustomersWithBorrowedMovies(users).get(0).getName());

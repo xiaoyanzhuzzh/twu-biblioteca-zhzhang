@@ -81,7 +81,7 @@ public class MovieServiceTest {
     @Test
     public void canCheckOutBookTest() {
 
-        User user = new User("zhzhang", "1111", "customer");
+        User user = new User("zhzhang", "1111", "customer", "zhznag@163.com", "18729591184");
         Movie movie = new Movie(1, "The Social Network", "2010", "David Fincher", 8);
         movieService.checkOutMovie(movie, user);
 
@@ -100,7 +100,7 @@ public class MovieServiceTest {
 
     private User initUserWithBorrowedMovies() {
 
-        User user = new User("zhzhang", "1111", "customer");
+        User user = new User("zhzhang", "1111", "customer", "zhznag@163.com", "18729591184");
 
         List<Movie> borrowedMovies = new ArrayList<Movie>();
         Movie movie = new Movie(1, "The Social Network", "2010", "David Fincher", 8);
